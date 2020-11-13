@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" group="android" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="android/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1126385878/firebase_messaging.iml" filepath="$PROJECT_DIR$/.idea/modules/-1126385878/firebase_messaging.iml" group="android/firebase_messaging" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1053147384/flutter_secure_storage.iml" filepath="$PROJECT_DIR$/.idea/modules/1053147384/flutter_secure_storage.iml" group="android/flutter_secure_storage" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/598982795/fluttertoast.iml" filepath="$PROJECT_DIR$/.idea/modules/598982795/fluttertoast.iml" group="android/fluttertoast" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/250738700/path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/250738700/path_provider.iml" group="android/path_provider" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1367724042/sqflite.iml" filepath="$PROJECT_DIR$/.idea/modules/-1367724042/sqflite.iml" group="android/sqflite" />
+    </modules>
+  </component>
+</project>
