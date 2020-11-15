@@ -39,21 +39,23 @@ import Evergage
                     clientConfigurationBuilder.dataset = ds!
                     clientConfigurationBuilder.usePushNotifications = true
                     clientConfigurationBuilder.useDesignMode = true
-                    
                 }
 
             }
         }
         if methodCall.method == "interactionstudioLogEvent"
         {
-            result("Logged random event")
-            //var evergageScreen: EVGScreen?
-            
-            //evergageScreen = evergage.globalContext
-            
-            //evergageScreen?.trackAction("User Profile")
-            evergage.globalContext?.trackAction("Logged Generic Event")
+            var event: String?
+            var description: String?
 
+            if let args = methodCall.arguments as? Dictionary<String, AnyObject>
+            {
+                event = args["event"] as? String
+                description = args["description"] as? String
+            }
+            
+            //Need to handle different types of events, not just generic trackAction
+            evergage.globalContext?.trackAction(description!)
         }
     }
 
