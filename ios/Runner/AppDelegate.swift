@@ -17,7 +17,7 @@ import Evergage
     let CHANNEL = FlutterMethodChannel(name: "demo.sfmc_holoapp/info", binaryMessenger: controller.binaryMessenger)
     
     CHANNEL.setMethodCallHandler {[unowned self] (methodCall, result) in
-        if methodCall.method == "androidInitialize"
+        if methodCall.method == "interactionstudioInitialize"
         {
             var account: String?
             var ds: String?
