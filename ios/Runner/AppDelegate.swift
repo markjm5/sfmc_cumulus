@@ -32,7 +32,7 @@ import Evergage
             }else{
                 //result("Hi from Swift: " + account! + ds!)
                 // Recommended to set the authenticated user's ID as soon as known:
-                evergage.userId = "iOSUser"
+                //evergage.userId = "iOSUser"
                 // Start Evergage with your Evergage Configuration:
                 evergage.start { (clientConfigurationBuilder) in
                     clientConfigurationBuilder.account = account!
@@ -53,9 +53,18 @@ import Evergage
                 event = args["event"] as? String
                 description = args["description"] as? String
             }
-            
-            //Need to handle different types of events, not just generic trackAction
-            evergage.globalContext?.trackAction(description!)
+            switch event
+            {
+                case "setUserId":
+                    evergage.userId = description!
+
+                case "trackAction":
+                    evergage.globalContext?.trackAction(description!)
+
+                default:
+                    evergage.globalContext?.trackAction(description!)
+
+            }
         }
     }
 
