@@ -11,10 +11,10 @@ import Evergage
   ) -> Bool {
 
     let evergage = Evergage.sharedInstance()
-        
+
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
     
-    let CHANNEL = FlutterMethodChannel(name: "demo.sfmc_holoapp/info", binaryMessenger: controller.binaryMessenger)
+    let CHANNEL = FlutterMethodChannel(name: "demo.sfmc_cumulus/info", binaryMessenger: controller.binaryMessenger)
     
     CHANNEL.setMethodCallHandler {[unowned self] (methodCall, result) in
         if methodCall.method == "interactionstudioInitialize"
@@ -39,11 +39,25 @@ import Evergage
                     clientConfigurationBuilder.dataset = ds!
                     clientConfigurationBuilder.usePushNotifications = true
                     clientConfigurationBuilder.useDesignMode = true
+                    
                 }
+
             }
         }
+        if methodCall.method == "interactionstudioLogEvent"
+        {
+            result("Logged random event")
+            //var evergageScreen: EVGScreen?
+            
+            //evergageScreen = evergage.globalContext
+            
+            //evergageScreen?.trackAction("User Profile")
+            evergage.globalContext?.trackAction("Logged Generic Event")
+
+        }
     }
-        
+
+    
     GeneratedPluginRegistrant.register(with: self)
     if FirebaseApp.app() == nil {
         FirebaseApp.configure()

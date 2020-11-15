@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class MainActivity extends FlutterActivity {
 
-    private static final String CHANNEL = "demo.sfmc_holoapp/info";
+    private static final String CHANNEL = "demo.sfmc_cumulus/info";
     private FlutterActivity thisActivity = this;
     private MyFlutterApplication myApp;
     private Evergage myEvg;

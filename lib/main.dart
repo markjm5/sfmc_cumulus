@@ -30,7 +30,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
 
  static Locale locale = Locale('en');
- static const platform = const MethodChannel('demo.sfmc_holoapp/info'); 
+ static const platform = const MethodChannel('demo.sfmc_cumulus/info'); 
  String _message;
 
   @override
