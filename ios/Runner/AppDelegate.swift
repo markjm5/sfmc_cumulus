@@ -30,9 +30,6 @@ import Evergage
             if account!.isEmpty || ds!.isEmpty {
                 result("Could not connect to Interaction Studio")
             }else{
-                //result("Hi from Swift: " + account! + ds!)
-                // Recommended to set the authenticated user's ID as soon as known:
-                //evergage.userId = "iOSUser"
                 // Start Evergage with your Evergage Configuration:
                 evergage.start { (clientConfigurationBuilder) in
                     clientConfigurationBuilder.account = account!
@@ -53,13 +50,31 @@ import Evergage
                 event = args["event"] as? String
                 description = args["description"] as? String
             }
+                        
             switch event
             {
                 case "setUserId":
                     evergage.userId = description!
 
-                case "trackAction":
-                    evergage.globalContext?.trackAction(description!)
+                case "viewCategory":
+                    var a:EVGCategory?
+                    a = description! as? EVGCategory
+                    evergage.globalContext?.viewCategory(a!)
+
+                case "viewTag":
+                    var a:EVGTag?
+                    a = description! as? EVGTag
+                    evergage.globalContext?.viewTag(a!)
+
+                //case "viewItem":
+                //  var a:EVGItem?
+                //  a = description! as? EVGItem
+                //  evergage.globalContext?.viewItem(a!, "blah")
+
+                //case "viewItemDetail":
+                //  var a:EVGItem?
+                //  a = description! as? EVGItem
+                //  evergage.globalContext?.viewItemDetail(a!, "blah")
 
                 default:
                     evergage.globalContext?.trackAction(description!)
