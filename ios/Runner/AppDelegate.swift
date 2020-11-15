@@ -28,9 +28,9 @@ import Evergage
                 ds = args["ds"] as? String
             }
             if account!.isEmpty || ds!.isEmpty {
-                result("Hi from Swift")
+                result("Could not connect to Interaction Studio")
             }else{
-                result("Hi from Swift: " + account! + ds!)
+                //result("Hi from Swift: " + account! + ds!)
                 // Recommended to set the authenticated user's ID as soon as known:
                 evergage.userId = "iOSUser"
                 // Start Evergage with your Evergage Configuration:
