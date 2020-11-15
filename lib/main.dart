@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState(){
 
-    _androidInitialize().then((String message){
+    _interactionstudioInitialize().then((String message){
       setState(() {
         _message = message;        
       });   
@@ -65,8 +65,8 @@ class _MyAppState extends State<MyApp> {
             fontFamily: locale.languageCode == 'ar' ? 'Dubai' : 'Lato'),
         initialRoute: '/',
         routes: <String, WidgetBuilder>{
-          '/': (BuildContext context) => Home(_androidLogEvent, _registerTap),
-          '/auth': (BuildContext context) => Auth(_androidLogEvent, _registerTap),
+          '/': (BuildContext context) => Home(_interactionstudioLogEvent, _registerTap),
+          '/auth': (BuildContext context) => Auth(_interactionstudioLogEvent, _registerTap),
           '/shop': (BuildContext context) => Shop(),
           '/categorise': (BuildContext context) => Categorise(),
           '/wishlist': (BuildContext context) => WishList(),
@@ -78,15 +78,15 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  void _registerTap(String tapEvent, String tapDescription, Function androidLogEvent) {
-    androidLogEvent(tapEvent, tapDescription).then((String message){
+  void _registerTap(String tapEvent, String tapDescription, Function interactionstudioLogEvent) {
+    interactionstudioLogEvent(tapEvent, tapDescription).then((String message){
       setState(() {
         _message = message;        
       });   
    });
   }
 
-  Future<String> _androidInitialize() async {
+  Future<String> _interactionstudioInitialize() async {
 
     var sendMap = <String, dynamic> {
       'account': 'interactionstudio',
@@ -95,7 +95,7 @@ class _MyAppState extends State<MyApp> {
 
     String value;
     try {
-      value = await platform.invokeMethod('androidInitialize', sendMap);
+      value = await platform.invokeMethod('interactionstudioInitialize', sendMap);
       print("initialize: " + value.toString());
     } catch (e){
       print(e);
@@ -104,7 +104,7 @@ class _MyAppState extends State<MyApp> {
     return value;
   }
 
-  Future<String> _androidLogEvent(String tapEvent, String tapDescription) async {
+  Future<String> _interactionstudioLogEvent(String tapEvent, String tapDescription) async {
     var sendMap = <String, dynamic> {
       'event': tapEvent,
       'description': tapDescription,
@@ -112,7 +112,7 @@ class _MyAppState extends State<MyApp> {
 
     String value;
     try {
-      value = await platform.invokeMethod('androidLogEvent', sendMap);
+      value = await platform.invokeMethod('interactionstudioLogEvent', sendMap);
       print("log event: " + value.toString());
 
     } catch (e){

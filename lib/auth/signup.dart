@@ -4,25 +4,25 @@ import 'package:sfmc_holoapp/blocks/auth_block.dart';
 import 'package:provider/provider.dart';
 
 class SignUp extends StatefulWidget {
-  final Function androidLogEvent;
+  final Function interactionstudioLogEvent;
   final Function registerTap;
 
-  SignUp(this.androidLogEvent, this.registerTap);
+  SignUp(this.interactionstudioLogEvent, this.registerTap);
   
   @override
-  _SignUpState createState() => _SignUpState(androidLogEvent, registerTap);
+  _SignUpState createState() => _SignUpState(interactionstudioLogEvent, registerTap);
 }
 
 class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
-  final Function _androidLogEvent;
+  final Function _interactionstudioLogEvent;
   final Function _registerTap;
 
   final User user = User();
   String confirmPassword;
 
   @override
-  _SignUpState(this._androidLogEvent, this._registerTap);
+  _SignUpState(this._interactionstudioLogEvent, this._registerTap);
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class _SignUpState extends State<SignUp> {
                         return null;
                       },
                       onSaved: (value) {
-                        _registerTap('setUserId',value, _androidLogEvent);
+                        _registerTap('setUserId',value, _interactionstudioLogEvent);
 
                         setState(() {
                           user.username = value;

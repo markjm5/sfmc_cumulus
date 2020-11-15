@@ -35,8 +35,8 @@ import Evergage
                 evergage.userId = "iOSUser"
                 // Start Evergage with your Evergage Configuration:
                 evergage.start { (clientConfigurationBuilder) in
-                    clientConfigurationBuilder.account = "interactionstudio"
-                    clientConfigurationBuilder.dataset = "mmukherjee_sandbox"
+                    clientConfigurationBuilder.account = account!
+                    clientConfigurationBuilder.dataset = ds!
                     clientConfigurationBuilder.usePushNotifications = true
                     clientConfigurationBuilder.useDesignMode = true
                 }

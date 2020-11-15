@@ -5,27 +5,27 @@ import 'signin.dart';
 import 'signup.dart';
 
 class Auth extends StatefulWidget {
-  final Function androidLogEvent;
+  final Function interactionstudioLogEvent;
   final Function registerTap;
 
-  Auth(this.androidLogEvent, this.registerTap);
+  Auth(this.interactionstudioLogEvent, this.registerTap);
 
   @override
-  _Auth createState() => _Auth(androidLogEvent, registerTap);
+  _Auth createState() => _Auth(interactionstudioLogEvent, registerTap);
 
 }
 
 class _Auth extends State<Auth> {
-  final Function _androidLogEvent;
+  final Function _interactionstudioLogEvent;
   final Function _registerTap;
 
   final List<Widget> tabs = [];
 
   @override
-  _Auth(this._androidLogEvent, this._registerTap){
+  _Auth(this._interactionstudioLogEvent, this._registerTap){
 
-    tabs.add(SignIn(_androidLogEvent, _registerTap));
-    tabs.add(SignUp(_androidLogEvent, _registerTap));
+    tabs.add(SignIn(_interactionstudioLogEvent, _registerTap));
+    tabs.add(SignUp(_interactionstudioLogEvent, _registerTap));
 
   }
 

@@ -4,23 +4,23 @@ import 'package:sfmc_holoapp/models/user.dart';
 import 'package:provider/provider.dart';
 
 class SignIn extends StatefulWidget {
-  final Function androidLogEvent;
+  final Function interactionstudioLogEvent;
   final Function registerTap;
 
-  SignIn(this.androidLogEvent, this.registerTap);
+  SignIn(this.interactionstudioLogEvent, this.registerTap);
 
   @override
-  _SignInState createState() => _SignInState(androidLogEvent, registerTap);
+  _SignInState createState() => _SignInState(interactionstudioLogEvent, registerTap);
 }
 
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   final UserCredential userCredential = UserCredential();
-  final Function _androidLogEvent;
+  final Function _interactionstudioLogEvent;
   final Function _registerTap;  
 
   @override
-  _SignInState(this._androidLogEvent, this._registerTap);
+  _SignInState(this._interactionstudioLogEvent, this._registerTap);
 
 
   @override
@@ -48,7 +48,7 @@ class _SignInState extends State<SignIn> {
                         return null;
                       },
                       onSaved: (value) {
-                        _registerTap('setUserId',value, _androidLogEvent);
+                        _registerTap('setUserId',value, _interactionstudioLogEvent);
 
                         setState(() {
                           userCredential.usernameOrEmail = value;

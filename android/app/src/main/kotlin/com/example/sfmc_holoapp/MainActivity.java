@@ -75,7 +75,7 @@ public class MainActivity extends FlutterActivity {
 
                 Map<String, Object> arguments = methodCall.arguments();
 
-                if(methodCall.method.equals("androidInitialize")){
+                if(methodCall.method.equals("interactionstudioInitialize")){
 
                     String account = (String) arguments.get("account");
                     String ds = (String) arguments.get("ds");
@@ -95,7 +95,7 @@ public class MainActivity extends FlutterActivity {
 
                 }
 
-                if(methodCall.method.equals("androidLogEvent")) {
+                if(methodCall.method.equals("interactionstudioLogEvent")) {
 
                     String event = (String) arguments.get("event");
                     String description = (String) arguments.get("description");
