@@ -145,7 +145,7 @@ class _HomeState extends State<Home> {
                                     clipBehavior: Clip.antiAlias,
                                     child: InkWell(
                                       onTap: () {
-                                        _registerTap('trackAction','App: ' + i.productName, _interactionstudioLogEvent);
+                                        _registerTap('viewItem',i.productName, _interactionstudioLogEvent); //Play Around With This
                                         Navigator.pushNamed(
                                             context, '/products',
                                             arguments: i.productImage);

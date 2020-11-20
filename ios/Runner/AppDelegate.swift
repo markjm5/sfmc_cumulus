@@ -62,15 +62,13 @@ import Evergage
                     evergage.globalContext?.viewCategory(a!)
 
                 case "viewTag":
-                    var a:EVGTag?
-                    a = description! as? EVGTag
-                    evergage.globalContext?.viewTag(a!)
+                    var a:EVGTagType?
+                    a = EVGTagType.init(rawValue: 0) //This integer needs to be dynamic
+                    evergage.globalContext?.viewTag(EVGTag.init(id:description!, type:a!))
 
-                //case "viewItem":
-                //  var a:EVGItem?
-                //  a = description! as? EVGItem
-                //  evergage.globalContext?.viewItem(a!, "blah")
-
+                case "viewItem":
+                    evergage.globalContext?.viewItem(EVGProduct.init(id:description!))
+                
                 //case "viewItemDetail":
                 //  var a:EVGItem?
                 //  a = description! as? EVGItem
