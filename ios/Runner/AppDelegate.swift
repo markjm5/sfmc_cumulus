@@ -12,7 +12,10 @@ import Evergage
 
     let evergage = Evergage.sharedInstance()
 
-    let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
+    //let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
+
+    let controller : EVGViewController = window?.rootViewController as! EVGViewController
+
     
     let CHANNEL = FlutterMethodChannel(name: "demo.sfmc_cumulus/info", binaryMessenger: controller.binaryMessenger)
     
