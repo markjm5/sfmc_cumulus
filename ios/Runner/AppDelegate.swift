@@ -80,7 +80,16 @@ import Evergage
 
                 case "viewItem":
                     evergage.globalContext?.viewItem(EVGProduct.init(id:description!))
-                    strResult = "Can View Product"
+                    var strCampaignName:String?
+                    strCampaignName = controller.campaign?.campaignName
+                    
+                    if strCampaignName == nil {
+                        strResult = "Campaign Name: NIL"
+                    }
+                    else{
+                        strResult = "Campaign Name: " + strCampaignName!
+
+                    }
                 //case "viewItemDetail":
                 //  var a:EVGItem?
                 //  a = description! as? EVGItem
