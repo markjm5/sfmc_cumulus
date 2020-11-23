@@ -17,15 +17,19 @@
         
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
-    
+    //__weak typeof(self) weakSelf = self;
     EVGCampaignHandler handler = ^(EVGCampaign * __nonnull campaign) {
         // Safest to perform a single method/operation on weakSelf, which will simply be a no-op if weakSelf is nil:
+        //weakSelf.campaign = campaign;
+        self.campaign = campaign;
     };
+    
+    //self.handler = (EVGCampaignHandler) handler1;
 
-    // The target string uniquely identifies the expected data schema - here, a featured product:
-    //[self.evergageScreen setCampaignHandler:handler forTarget:@"Featured Product"];
 }
-
 @end
+
+

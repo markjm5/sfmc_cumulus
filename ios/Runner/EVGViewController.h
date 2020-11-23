@@ -7,6 +7,8 @@
 
 @interface EVGViewController:FlutterViewController
 
+@property EVGCampaign *campaign;
+
 - (void)viewWillAppear:(BOOL)animated;
 
 @end

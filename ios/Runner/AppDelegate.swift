@@ -15,7 +15,7 @@ import Evergage
     //let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
 
     let controller : EVGViewController = window?.rootViewController as! EVGViewController
-
+    var strResult: String?
     
     let CHANNEL = FlutterMethodChannel(name: "demo.sfmc_cumulus/info", binaryMessenger: controller.binaryMessenger)
     
@@ -31,7 +31,8 @@ import Evergage
                 ds = args["ds"] as? String
             }
             if account!.isEmpty || ds!.isEmpty {
-                result("Could not connect to Interaction Studio")
+                //result("Could not connect to Interaction Studio")
+                strResult = "Could not connect to Interaction Studio"
             }else{
                 // Start Evergage with your Evergage Configuration:
                 evergage.start { (clientConfigurationBuilder) in
@@ -39,6 +40,8 @@ import Evergage
                     clientConfigurationBuilder.dataset = ds!
                     clientConfigurationBuilder.usePushNotifications = true
                     clientConfigurationBuilder.useDesignMode = true
+                    strResult = "Connected to Interaction Studio"
+
                 }
 
             }
@@ -63,7 +66,7 @@ import Evergage
                     var a:EVGCategory?
                     a = description! as? EVGCategory
                     evergage.globalContext?.viewCategory(a!)
-                    
+
                 case "viewTag":
                     var evgTagType:EVGTagType?
                     
@@ -77,7 +80,7 @@ import Evergage
 
                 case "viewItem":
                     evergage.globalContext?.viewItem(EVGProduct.init(id:description!))
-                
+                    strResult = "Can View Product"
                 //case "viewItemDetail":
                 //  var a:EVGItem?
                 //  a = description! as? EVGItem
@@ -88,6 +91,7 @@ import Evergage
 
             }
         }
+        result(strResult)
     }
 
     
