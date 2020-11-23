@@ -63,11 +63,17 @@ import Evergage
                     var a:EVGCategory?
                     a = description! as? EVGCategory
                     evergage.globalContext?.viewCategory(a!)
-
+                    
                 case "viewTag":
-                    var a:EVGTagType?
-                    a = EVGTagType.init(rawValue: 0) //This integer needs to be dynamic
-                    evergage.globalContext?.viewTag(EVGTag.init(id:description!, type:a!))
+                    var evgTagType:EVGTagType?
+                    
+                    //var tagId: String?
+                    //var tagType: Int?
+                    // Split description var by pipe, assign each component of string to the above 2 vars
+                    // Replace vars below (id, type) with the above 2 vars
+                    
+                    evgTagType = EVGTagType.init(rawValue: 0) //This integer needs to be dynamic
+                    evergage.globalContext?.viewTag(EVGTag.init(id:description!, type:evgTagType!))
 
                 case "viewItem":
                     evergage.globalContext?.viewItem(EVGProduct.init(id:description!))
