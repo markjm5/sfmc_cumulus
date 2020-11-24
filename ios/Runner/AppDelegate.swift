@@ -16,18 +16,19 @@ import Evergage
         
         let controller : EVGViewController = window?.rootViewController as! EVGViewController
         var strResult: String?
-        
-        let CHANNEL = FlutterMethodChannel(name: "demo.sfmc_cumulus/info", binaryMessenger: controller.binaryMessenger)
-        
+
         // Note self is captured weakly
         let handler = { [weak self] (campaign: EVGCampaign) -> Void in
             // Safest to perform a single method/operation on weakSelf, which will simply be a no-op if weakSelf is nil:
             self?.handleCampaign(campaign: campaign)
+            
         }
         
         // The target string uniquely identifies the expected data schema - here, a featured product:
         controller.evergageScreen?.setCampaignHandler(handler, forTarget: "cumulusFeaturedProduct")
-        
+
+        let CHANNEL = FlutterMethodChannel(name: "demo.sfmc_cumulus/info", binaryMessenger: controller.binaryMessenger)
+                
         
         CHANNEL.setMethodCallHandler {[unowned self] (methodCall, result) in
             if methodCall.method == "interactionstudioInitialize"
@@ -73,10 +74,10 @@ import Evergage
                 case "setUserId":
                     evergage.userId = description!
                     
-                case "viewCategory":
-                    var a:EVGCategory?
-                    a = description! as? EVGCategory
-                    evergage.globalContext?.viewCategory(a!)
+                //case "viewCategory":
+                //    var a:EVGCategory?
+                //    a = description! as? EVGCategory
+                //    evergage.globalContext?.viewCategory(a!)
                     
                 case "viewTag":
                     var evgTagType:EVGTagType?
@@ -93,17 +94,17 @@ import Evergage
                     
                     evergage.globalContext?.viewItem(EVGProduct.init(id:description!))
                     
-                    var strCampaignName:String?
+                    //var strCampaignName:String?
                     
-                    strCampaignName = controller.campaign?.campaignName
+                    //strCampaignName = controller.campaign?.campaignName
                     
-                    if strCampaignName == nil {
-                        strResult = "Campaign Name: NIL"
-                    }
-                    else{
-                        strResult = "Campaign Name: " + strCampaignName!
+                    //if strCampaignName == nil {
+                    //    strResult = "Campaign Name: NIL"
+                    //}
+                    //else{
+                    //    strResult = "Campaign Name: " + strCampaignName!
                         
-                    }
+                    //}
                     //case "viewItemDetail":
                     //  var a:EVGItem?
                     //  a = description! as? EVGItem
@@ -119,9 +120,9 @@ import Evergage
         
         
         GeneratedPluginRegistrant.register(with: self)
-        if FirebaseApp.app() == nil {
-            FirebaseApp.configure()
-        }
+        //if FirebaseApp.app() == nil {
+        //    FirebaseApp.configure()
+        //}
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
@@ -132,6 +133,5 @@ import Evergage
         
     }
     
-    
-    override init() { FirebaseApp.configure() }
+    //override init() { FirebaseApp.configure() }
 }
