@@ -88,11 +88,14 @@ import Evergage
                     // Replace vars below (id, type) with the above 2 vars
                     
                     evgTagType = EVGTagType.init(rawValue: 0) //This integer needs to be dynamic
-                    evergage.globalContext?.viewTag(EVGTag.init(id:description!, type:evgTagType!))
+                    //evergage.globalContext?.viewTag(EVGTag.init(id:description!, type:evgTagType!))
+                    controller.evergageScreen?.viewTag(EVGTag.init(id:description!, type:evgTagType!))
                     
                 case "viewItem":
                     
-                    evergage.globalContext?.viewItem(EVGProduct.init(id:description!))
+                    //evergage.globalContext?.viewItem(EVGProduct.init(id:description!))
+
+                    controller.evergageScreen?.viewItem(EVGProduct.init(id:description!))
                     
                     //var strCampaignName:String?
                     
@@ -111,7 +114,8 @@ import Evergage
                     //  evergage.globalContext?.viewItemDetail(a!, "blah")
                     
                 default:
-                    evergage.globalContext?.trackAction(description!)
+                    //evergage.globalContext?.trackAction(description!)
+                    controller.evergageScreen?.trackAction(description!)
                     
                 }
             }
