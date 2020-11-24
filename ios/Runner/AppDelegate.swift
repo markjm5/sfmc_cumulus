@@ -121,7 +121,7 @@ import Evergage
             }
 
             if self.activeCampaign != nil {
-                self.strResult = "Campaign Name: " + self.activeCampaign!.campaignName
+                self.strResult = "Campaign Name: " + self.activeCampaign!.campaignName + "|" + self.activeCampaign!.data.description
             }else {
                 self.strResult = "No Campaign Returned"
             }
