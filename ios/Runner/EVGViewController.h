@@ -10,5 +10,6 @@
 @property EVGCampaign *campaign;
 
 - (void)viewWillAppear:(BOOL)animated;
+- (void)handleCampaign:(nonnull EVGCampaign *)campaign;
 
 @end

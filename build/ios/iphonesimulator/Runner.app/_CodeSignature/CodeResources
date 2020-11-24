@@ -302,7 +302,7 @@
 		</data>
 		<key>Frameworks/flutter_secure_storage.framework/flutter_secure_storage</key>
 		<data>
-		aCxH6pziJxlxpAZoqOvjNoJt2fc=
+		NboS9GrEAu91uB1mOrCwraqN8cg=
 		</data>
 		<key>Frameworks/fluttertoast.framework/Info.plist</key>
 		<data>
@@ -314,7 +314,7 @@
 		</data>
 		<key>Frameworks/fluttertoast.framework/fluttertoast</key>
 		<data>
-		Ykqtb9BlscZ9MObM9CiGh+lilLE=
+		u7jB0cogbTPqYDufuDRUFcf+6Zo=
 		</data>
 		<key>Frameworks/libswiftCore.dylib</key>
 		<data>
@@ -366,7 +366,7 @@
 		</data>
 		<key>Frameworks/path_provider.framework/path_provider</key>
 		<data>
-		+kx5pRS9BlCZCadKVnsBOHC8K+U=
+		E3hqI+jhAA5K0/Jnf3Xz/O8bdwg=
 		</data>
 		<key>Frameworks/sqflite.framework/Info.plist</key>
 		<data>
@@ -378,7 +378,7 @@
 		</data>
 		<key>Frameworks/sqflite.framework/sqflite</key>
 		<data>
-		YhlhDxoNqxZ+l5Y/s7EJHajIlQc=
+		/7RbbsSGdkULl6UDGFeduVyQExc=
 		</data>
 		<key>GoogleService-Info.plist</key>
 		<data>
@@ -1213,11 +1213,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			aCxH6pziJxlxpAZoqOvjNoJt2fc=
+			NboS9GrEAu91uB1mOrCwraqN8cg=
 			</data>
 			<key>hash2</key>
 			<data>
-			JtxVe3h0zsmnAQsV/GdAtT/JIjG7NYQ/GvjWfPdhq7A=
+			MCGDa9oxeUP0yuT8vx9pea0cbw/YGIt9Pz0GZoBa+Qc=
 			</data>
 		</dict>
 		<key>Frameworks/fluttertoast.framework/Info.plist</key>
@@ -1246,11 +1246,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Ykqtb9BlscZ9MObM9CiGh+lilLE=
+			u7jB0cogbTPqYDufuDRUFcf+6Zo=
 			</data>
 			<key>hash2</key>
 			<data>
-			fv++9T1Nt9ZguCk6q4wMMi/zSEbkp3ZtdSS86IlW1tc=
+			qEVvsqt2KnbCnyrHPdDF8z0S2vVf0cNAf+oUGG2LsIU=
 			</data>
 		</dict>
 		<key>Frameworks/libswiftCore.dylib</key>
@@ -1389,11 +1389,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+kx5pRS9BlCZCadKVnsBOHC8K+U=
+			E3hqI+jhAA5K0/Jnf3Xz/O8bdwg=
 			</data>
 			<key>hash2</key>
 			<data>
-			+FHtxjvoAgoluRV4JQ2tBfzmHGeq80di/2csfujyMmU=
+			Lo6u12dSmkxPTc9ZL2WJ83r23Te+BDJ3rz8GTCD1FIE=
 			</data>
 		</dict>
 		<key>Frameworks/sqflite.framework/Info.plist</key>
@@ -1422,11 +1422,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			YhlhDxoNqxZ+l5Y/s7EJHajIlQc=
+			/7RbbsSGdkULl6UDGFeduVyQExc=
 			</data>
 			<key>hash2</key>
 			<data>
-			6c59Fyvcuh4Ztp2haFC+rJXjkVevwTMvGPV5j9m/nnE=
+			H+J7wFQbgezuvMqBg+fd9svVXJLuvEWBMroPwE83nBs=
 			</data>
 		</dict>
 		<key>GoogleService-Info.plist</key>

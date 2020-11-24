@@ -20,16 +20,22 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //__weak typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     EVGCampaignHandler handler = ^(EVGCampaign * __nonnull campaign) {
         // Safest to perform a single method/operation on weakSelf, which will simply be a no-op if weakSelf is nil:
-        //weakSelf.campaign = campaign;
-        self.campaign = campaign;
+        [weakSelf handleCampaign:campaign];
     };
     
-    //self.handler = (EVGCampaignHandler) handler1;
-
+    // The target string uniquely identifies the expected data schema - here, a featured product:
+    //[self.evergageScreen setCampaignHandler:handler forTarget:@"cumulusFeaturedProduct"];
+    
 }
+
+- (void)handleCampaign:(nonnull EVGCampaign *)campaign {
+    self.campaign = campaign;
+    NSString *featuredProductName = campaign.data[@"featuredProductName"];
+}
+
 @end
 
 
