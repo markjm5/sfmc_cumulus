@@ -5,6 +5,9 @@ import Evergage
 
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
+    var activeCampaign:EVGCampaign?
+    var strResult:String?
+
     override func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -15,12 +18,11 @@ import Evergage
         //let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
         
         let controller : EVGViewController = window?.rootViewController as! EVGViewController
-        var strResult: String?
 
         // Note self is captured weakly
         let handler = { [weak self] (campaign: EVGCampaign) -> Void in
             // Safest to perform a single method/operation on weakSelf, which will simply be a no-op if weakSelf is nil:
-            self?.handleCampaign(campaign: campaign)
+            self?.handleCampaign(campaign: campaign, controller: controller)
             
         }
         
@@ -43,7 +45,7 @@ import Evergage
                 }
                 if account!.isEmpty || ds!.isEmpty {
                     //result("Could not connect to Interaction Studio")
-                    strResult = "Could not connect to Interaction Studio"
+                    self.strResult = "Could not connect to Interaction Studio"
                 }else{
                     // Start Evergage with your Evergage Configuration:
                     evergage.start { (clientConfigurationBuilder) in
@@ -51,8 +53,7 @@ import Evergage
                         clientConfigurationBuilder.dataset = ds!
                         clientConfigurationBuilder.usePushNotifications = true
                         clientConfigurationBuilder.useDesignMode = true
-                        strResult = "Connected to Interaction Studio"
-                        
+                        self.strResult = "Connected to Interaction Studio"
                     }
                     
                 }
@@ -100,7 +101,11 @@ import Evergage
                     //var strCampaignName:String?
                     
                     //strCampaignName = controller.campaign?.campaignName
-                    
+                    if self.activeCampaign != nil {
+                        self.strResult = "Campaign Name: " + self.activeCampaign!.campaignName
+                    }else {
+                        self.strResult = "No Campaign Returned"
+                    }
                     //if strCampaignName == nil {
                     //    strResult = "Campaign Name: NIL"
                     //}
@@ -119,7 +124,7 @@ import Evergage
                     
                 }
             }
-            result(strResult)
+            result(self.strResult)
         }
         
         
@@ -131,10 +136,14 @@ import Evergage
     }
     
     
-    func handleCampaign(campaign: EVGCampaign) {
+    func handleCampaign(campaign: EVGCampaign, controller: EVGViewController) {
         
         // Validate the campaign data since it's dynamic JSON. Avoid processing if fails.
+        //let featuredProductName = campaign.data["promotedProduct"] as? String
         
+        // Track the impression for statistics even if the user is in the control group.
+        controller.evergageScreen?.trackImpression(campaign)
+        self.activeCampaign = campaign
     }
     
     //override init() { FirebaseApp.configure() }
