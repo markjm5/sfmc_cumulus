@@ -21,8 +21,9 @@ class Product
 {
   String productName;
   String productImage;
+  String productId;
   
-  Product(this.productName, this.productImage);
+  Product(this.productName, this.productImage, this.productId);
 }
 
 class _HomeState extends State<Home> {
@@ -38,10 +39,10 @@ class _HomeState extends State<Home> {
 */
 
   final List<Product> imgList = [
-      Product('Cloud Travel','https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png'),
-      Product('Cloud Plus','https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png'),
-      Product('Cloud Freedom','https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png'),
-      Product('Cloud Student','https://cumulus-fs.s3.amazonaws.com/images/credit-card-student-no-logo.png'),      
+      Product('Cloud Travel Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png', 'cloud-travel-card'),
+      Product('Cloud Plus Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png', 'cloud-plus-card'),
+      Product('Freedom Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png', 'freedom-card'),
+      Product('Student Credit Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-student-no-logo.png', 'student-credit-card'),      
   ];
 
   final List<String> imgList2 = [
@@ -145,7 +146,7 @@ class _HomeState extends State<Home> {
                                     clipBehavior: Clip.antiAlias,
                                     child: InkWell(
                                       onTap: () {
-                                        _registerTap('viewItem',i.productName, _interactionstudioLogEvent); //Play Around With This
+                                        _registerTap('viewItem',i.productId, _interactionstudioLogEvent); //Play Around With This
                                         Navigator.pushNamed(
                                             context, '/products',
                                             arguments: i.productImage);
