@@ -101,11 +101,6 @@ import Evergage
                     //var strCampaignName:String?
                     
                     //strCampaignName = controller.campaign?.campaignName
-                    if self.activeCampaign != nil {
-                        self.strResult = "Campaign Name: " + self.activeCampaign!.campaignName
-                    }else {
-                        self.strResult = "No Campaign Returned"
-                    }
                     //if strCampaignName == nil {
                     //    strResult = "Campaign Name: NIL"
                     //}
@@ -124,6 +119,13 @@ import Evergage
                     
                 }
             }
+
+            if self.activeCampaign != nil {
+                self.strResult = "Campaign Name: " + self.activeCampaign!.campaignName
+            }else {
+                self.strResult = "No Campaign Returned"
+            }
+
             result(self.strResult)
         }
         
