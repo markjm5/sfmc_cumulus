@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sfmc_holoapp/localizations.dart';
@@ -82,8 +84,21 @@ class _HomeState extends State<Home> {
 
     String banner1Path = 'https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg';
     String banner2Path = 'https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg';
+    String jsonString = "";
+    if(_returnMessage() == "No Campaign"){
+        jsonString = _returnMessage();
+    }else{
+        jsonString = convertToJson(_returnMessage());
 
-    print('Here in Home.dart: ' + _returnMessage());
+    }
+
+    print('Here in Home.dart: ' + jsonString);
+
+    //final String parsedMessage = _returnMessage().toString().split("|")[1];
+
+    //if parsedMessage.contains("promotedProduct"){
+    //  parsePromotedProduct(parsedMessage);
+    //}
 
     return Scaffold(
       drawer: Drawer(
@@ -300,4 +315,33 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+
+  String convertToJson(strToConvert){
+
+    strToConvert = strToConvert.replaceAll(new RegExp(r'\('), '[');
+    strToConvert = strToConvert.replaceAll(new RegExp(r'\)'), ']');
+    strToConvert = strToConvert.replaceAll(new RegExp(r';'), ',');
+    strToConvert = strToConvert.replaceAll(new RegExp(r'<'), '');
+    strToConvert = strToConvert.replaceAll(new RegExp(r'>'), '');
+    strToConvert = strToConvert.replaceAll(new RegExp(r'"'), '');
+
+    String newStr = strToConvert.replaceAllMapped(RegExp(r'([_a-zA-Z0-9-.\/:]+)'), (match) {
+      return '"${match.group(0)}"';
+    });
+
+    String newStr1 = newStr.replaceAllMapped(RegExp(r'(,\s+\})'), (match) {
+      return '}';
+    });
+
+    newStr1 = newStr1.replaceAll(new RegExp(r'='), ':');
+ 
+    var pos1 = newStr1.indexOf("[");           // 3
+    var pos2 = newStr1.indexOf("[", pos1 + 1);
+
+    newStr1 = newStr1.substring(pos2, newStr1.length - 1);
+
+    return newStr1;
+
+  }
+
 }

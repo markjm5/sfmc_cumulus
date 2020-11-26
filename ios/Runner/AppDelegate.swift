@@ -7,6 +7,7 @@ import Evergage
 @objc class AppDelegate: FlutterAppDelegate {
     var activeCampaign:EVGCampaign?
     var strResult:String?
+    var dict = [String: Any]()
 
     override func application(
         _ application: UIApplication,
@@ -14,7 +15,7 @@ import Evergage
     ) -> Bool {
         
         let evergage = Evergage.sharedInstance()
-        
+
         //let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
         
         let controller : EVGViewController = window?.rootViewController as! EVGViewController
@@ -37,6 +38,7 @@ import Evergage
             {
                 var account: String?
                 var ds: String?
+                
                 
                 if let args = methodCall.arguments as? Dictionary<String, AnyObject>
                 {
@@ -121,12 +123,20 @@ import Evergage
             }
 
             if self.activeCampaign != nil {
-                self.strResult = self.activeCampaign!.campaignName + "|" + self.activeCampaign!.data.description
+                //self.strResult = self.activeCampaign!.campaignName + "|" + String(self.activeCampaign!.data.values)
+                self.dict = self.activeCampaign!.data
+                //self.dict = self.activeCampaign!.data
+
             }else {
-                self.strResult = "No Campaign Returned"
+                self.strResult = "No Campaign"
             }
 
-            result(self.strResult)
+            if self.dict.count > 0{
+                result(self.dict.description)
+            }
+            else{
+                result(self.strResult)
+            }
         }
         
         
