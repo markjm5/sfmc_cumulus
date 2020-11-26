@@ -29,6 +29,7 @@ class Product
   Product(this.productName, this.productImage, this.productId);
 }
 
+
 class _HomeState extends State<Home> {
  /* 
   final List<String> imgList = [
@@ -82,17 +83,29 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
-    String banner1Path = 'https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg';
-    String banner2Path = 'https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg';
+    String banner1Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
+    String banner2Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
+
     String jsonString = "";
-    if(_returnMessage() == "No Campaign"){
-        jsonString = _returnMessage();
-    }else{
+    String strImage = "";
+    String strUrl = ""; 
+
+  
+    if(_returnMessage() != "No Campaign"){
         jsonString = convertToJson(_returnMessage());
 
+        List<dynamic> jsonObj = jsonDecode(jsonString);
+
+        strUrl = jsonObj[0]["url"].toString();
+        strImage = jsonObj[0]["images"][0]["url"].toString();
+        banner1Path = strImage;
+        banner2Path = strImage;
+    }
+    else{
+      jsonString = _returnMessage();
+      print('Here in Home.dart: ' + jsonString.toString());
     }
 
-    print('Here in Home.dart: ' + jsonString);
 
     //final String parsedMessage = _returnMessage().toString().split("|")[1];
 
@@ -318,14 +331,22 @@ class _HomeState extends State<Home> {
 
   String convertToJson(strToConvert){
 
-    strToConvert = strToConvert.replaceAll(new RegExp(r'\('), '[');
-    strToConvert = strToConvert.replaceAll(new RegExp(r'\)'), ']');
-    strToConvert = strToConvert.replaceAll(new RegExp(r';'), ',');
-    strToConvert = strToConvert.replaceAll(new RegExp(r'<'), '');
-    strToConvert = strToConvert.replaceAll(new RegExp(r'>'), '');
-    strToConvert = strToConvert.replaceAll(new RegExp(r'"'), '');
+    var pos1 = strToConvert.indexOf("name");           
+    var pos2 = strToConvert.indexOf(";", pos1);
 
-    String newStr = strToConvert.replaceAllMapped(RegExp(r'([_a-zA-Z0-9-.\/:]+)'), (match) {
+    var newStrA = strToConvert.substring(0, pos1);
+    var newStrB = strToConvert.substring(pos2 + 1, strToConvert.length);
+
+    String strToConvert1 = newStrA + newStrB;
+
+    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\('), '[');
+    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\)'), ']');
+    strToConvert1 = strToConvert1.replaceAll(new RegExp(r';'), ',');
+    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'<'), '');
+    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'>'), '');
+    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'"'), '');
+
+    String newStr = strToConvert1.replaceAllMapped(RegExp(r'([_a-zA-Z0-9-.\/:]+)'), (match) {
       return '"${match.group(0)}"';
     });
 
@@ -335,10 +356,10 @@ class _HomeState extends State<Home> {
 
     newStr1 = newStr1.replaceAll(new RegExp(r'='), ':');
  
-    var pos1 = newStr1.indexOf("[");           // 3
-    var pos2 = newStr1.indexOf("[", pos1 + 1);
+    var pos3 = newStr1.indexOf("[");           
+    var pos4 = newStr1.indexOf("[", pos3 + 1);
 
-    newStr1 = newStr1.substring(pos2, newStr1.length - 1);
+    newStr1 = newStr1.substring(pos4, newStr1.length - 1);
 
     return newStr1;
 
