@@ -65,7 +65,7 @@ class _MyAppState extends State<MyApp> {
             fontFamily: locale.languageCode == 'ar' ? 'Dubai' : 'Lato'),
         initialRoute: '/',
         routes: <String, WidgetBuilder>{
-          '/': (BuildContext context) => Home(_interactionstudioLogEvent, _registerTap),
+          '/': (BuildContext context) => Home(_interactionstudioLogEvent, _registerTap, _message),
           '/auth': (BuildContext context) => Auth(_interactionstudioLogEvent, _registerTap),
           '/shop': (BuildContext context) => Shop(),
           '/categorise': (BuildContext context) => Categorise(),
@@ -81,7 +81,7 @@ class _MyAppState extends State<MyApp> {
   void _registerTap(String tapEvent, String tapDescription, Function interactionstudioLogEvent) {
     interactionstudioLogEvent(tapEvent, tapDescription).then((String message){
       setState(() {
-        _message = message;        
+        _message = 'GOT IT!!!!!'; //message;        
       });   
    });
   }

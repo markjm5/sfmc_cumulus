@@ -9,11 +9,12 @@ class Home extends StatefulWidget {
 
   final Function interactionstudioLogEvent;
   final Function registerTap;
+  final String message;
 
-  Home(this.interactionstudioLogEvent, this.registerTap);
+  Home(this.interactionstudioLogEvent, this.registerTap, this.message);
 
   @override
-  _HomeState createState() => _HomeState(interactionstudioLogEvent, registerTap);
+  _HomeState createState() => _HomeState(interactionstudioLogEvent, registerTap, message);
 }
 
 
@@ -65,7 +66,7 @@ class _HomeState extends State<Home> {
   String _message; 
 
   @override
-  _HomeState(this._interactionstudioLogEvent, this._registerTap);
+  _HomeState(this._interactionstudioLogEvent, this._registerTap, this._message);
 
   @override
   void initState(){
@@ -78,6 +79,12 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+
+    String banner1Path = 'https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg';
+    String banner2Path = 'https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg';
+
+    print('Here in Home.dart: ' + _message);
+
     return Scaffold(
       drawer: Drawer(
         child: AppDrawer(),
@@ -198,7 +205,7 @@ class _HomeState extends State<Home> {
                         child: Padding(
                           padding:
                               EdgeInsets.only(top: 6.0, left: 8.0, right: 8.0),
-                          child: new Image.network('https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg'),
+                          child: new Image.network(banner1Path),
                         ),
                       ),
                       Row(
@@ -280,7 +287,7 @@ class _HomeState extends State<Home> {
                         child: Padding(
                           padding: EdgeInsets.only(
                               top: 6.0, left: 8.0, right: 8.0, bottom: 10),
-                          child: new Image.network('https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg'),
+                          child: new Image.network(banner2Path),
                         ),
                       )
                     ],
