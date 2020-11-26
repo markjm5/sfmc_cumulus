@@ -9,12 +9,12 @@ class Home extends StatefulWidget {
 
   final Function interactionstudioLogEvent;
   final Function registerTap;
-  final String message;
+  final Function returnMessage;
 
-  Home(this.interactionstudioLogEvent, this.registerTap, this.message);
+  Home(this.interactionstudioLogEvent, this.registerTap, this.returnMessage);
 
   @override
-  _HomeState createState() => _HomeState(interactionstudioLogEvent, registerTap, message);
+  _HomeState createState() => _HomeState(interactionstudioLogEvent, registerTap, returnMessage);
 }
 
 
@@ -63,10 +63,10 @@ class _HomeState extends State<Home> {
 
   final Function _interactionstudioLogEvent;
   final Function _registerTap;
-  String _message; 
+  final Function _returnMessage; 
 
   @override
-  _HomeState(this._interactionstudioLogEvent, this._registerTap, this._message);
+  _HomeState(this._interactionstudioLogEvent, this._registerTap, this._returnMessage);
 
   @override
   void initState(){
@@ -83,7 +83,7 @@ class _HomeState extends State<Home> {
     String banner1Path = 'https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg';
     String banner2Path = 'https://cumulus-fs.s3.amazonaws.com/images/ads/banner-credit-card-finder.jpg';
 
-    print('Here in Home.dart: ' + _message);
+    print('Here in Home.dart: ' + _returnMessage());
 
     return Scaffold(
       drawer: Drawer(
