@@ -100,14 +100,10 @@ class _HomeState extends State<Home> {
         jsonObj.forEach((element) {
  
           strName = element["name"].toString();
-          image_list = element["images"];      
+          image_list = element["images"];   
+          strImage = image_list[0]["url"];   
         });        
 
-        //strUrl = jsonObj[0]["url"].toString();
-        //strImage = jsonObj[0]["images"]["images"][0].toString();
-        //List<dynamic> jsonObj1 = jsonDecode(jsonObj[0]["images"]["images"]);
-
-        //strImage = jsonObj[0]["images"]["images"][0]["url"]["url"].toString();
         banner1Path = strImage;
         banner2Path = strImage;
     }
@@ -394,7 +390,7 @@ class _HomeState extends State<Home> {
     String newStr4 = "";
 
     if(newStr3.contains(", \"userId\"")){
-      var pos1 = strToConvert.indexOf(", \"userId\"");           
+      var pos1 = newStr3.indexOf(", \"userId\"");           
       newStr4 = newStr3.substring(0, pos1);
     }else{
       newStr4 = newStr3;
