@@ -87,21 +87,21 @@ class _HomeState extends State<Home> {
     String banner2Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
 
     String jsonString = "";
+    String strName = "";
     String strImage = "";
     String strUrl = ""; 
+    List<dynamic> image_list = [];
 
-  
     if(_returnMessage() != "No Campaign"){
         jsonString = convertToJson(_returnMessage());
 
         List<dynamic> jsonObj = jsonDecode(jsonString);
 
-
-        jsonObj.forEach((n) => 
-          strImage = n["name"].toString()
-          
-        );
-
+        jsonObj.forEach((element) {
+ 
+          strName = element["name"].toString();
+          image_list = element["images"];      
+        });        
 
         //strUrl = jsonObj[0]["url"].toString();
         //strImage = jsonObj[0]["images"]["images"][0].toString();
@@ -389,8 +389,18 @@ class _HomeState extends State<Home> {
       return '"${match.group(0).trim().replaceFirst(new RegExp(r':\s'), '')}"';
     });
 
-    return newStr3;
+    //var pos1 = strToConvert.indexOf(", \"userId\"");           
 
+    String newStr4 = "";
+
+    if(newStr3.contains(", \"userId\"")){
+      var pos1 = strToConvert.indexOf(", \"userId\"");           
+      newStr4 = newStr3.substring(0, pos1);
+    }else{
+      newStr4 = newStr3;
+    }
+    
+    return newStr4;
   }
 
 }
