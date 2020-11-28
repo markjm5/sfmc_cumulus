@@ -28,7 +28,7 @@ import Evergage
         }
         
         // The target string uniquely identifies the expected data schema - here, a featured product:
-        controller.evergageScreen?.setCampaignHandler(handler, forTarget: "cumulusFeaturedProduct")
+        controller.evergageScreen?.setCampaignHandler(handler, forTarget: "zone1")
 
         let CHANNEL = FlutterMethodChannel(name: "demo.sfmc_cumulus/info", binaryMessenger: controller.binaryMessenger)
                 

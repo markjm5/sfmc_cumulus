@@ -43,10 +43,10 @@ class _HomeState extends State<Home> {
 */
 
   final List<Product> imgList = [
-      Product('Cloud Travel Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png', 'cloud-travel-card'),
-      Product('Cloud Plus Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png', 'cloud-plus-card'),
-      Product('Freedom Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png', 'freedom-card'),
-      Product('Student Credit Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-student-no-logo.png', 'student-credit-card'),      
+      Product('Cloud Travel Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png', '10001'),
+      Product('Cloud Plus Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png', '10001'),
+      Product('Freedom Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png', '10001'),
+      Product('Student Credit Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-student-no-logo.png', '10001'),      
   ];
 
   final List<String> imgList2 = [
@@ -96,8 +96,18 @@ class _HomeState extends State<Home> {
 
         List<dynamic> jsonObj = jsonDecode(jsonString);
 
-        strUrl = jsonObj[0]["url"].toString();
-        strImage = jsonObj[0]["images"][0]["url"].toString();
+
+        jsonObj.forEach((n) => 
+          strImage = n["name"].toString()
+          
+        );
+
+
+        //strUrl = jsonObj[0]["url"].toString();
+        //strImage = jsonObj[0]["images"]["images"][0].toString();
+        //List<dynamic> jsonObj1 = jsonDecode(jsonObj[0]["images"]["images"]);
+
+        //strImage = jsonObj[0]["images"]["images"][0]["url"]["url"].toString();
         banner1Path = strImage;
         banner2Path = strImage;
     }
@@ -331,24 +341,27 @@ class _HomeState extends State<Home> {
 
   String convertToJson(strToConvert){
 
-    var pos1 = strToConvert.indexOf("name");           
-    var pos2 = strToConvert.indexOf(";", pos1);
+    //var pos1 = strToConvert.indexOf("name");           
+    //var pos2 = strToConvert.indexOf(";", pos1);
 
-    var newStrA = strToConvert.substring(0, pos1);
-    var newStrB = strToConvert.substring(pos2 + 1, strToConvert.length);
+    //var newStrA = strToConvert.substring(0, pos1);
+    //var newStrB = strToConvert.substring(pos2 + 1, strToConvert.length);
 
-    String strToConvert1 = newStrA + newStrB;
+    //String strToConvert1 = newStrA + newStrB;
+
+    String strToConvert1 = strToConvert;
 
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\('), '[');
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\)'), ']');
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r';'), ',');
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r'<'), '');
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r'>'), '');
-    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'"'), '');
+    //strToConvert1 = strToConvert1.replaceAll(new RegExp(r'"'), '');
 
-    String newStr = strToConvert1.replaceAllMapped(RegExp(r'([_a-zA-Z0-9-.\/:]+)'), (match) {
-      return '"${match.group(0)}"';
-    });
+    //String newStr = strToConvert1.replaceAllMapped(RegExp(r'([_a-zA-Z0-9-.\/:]+)'), (match) {
+    //  return '"${match.group(0)}"';
+    //});
+    String newStr = strToConvert1;
 
     String newStr1 = newStr.replaceAllMapped(RegExp(r'(,\s+\})'), (match) {
       return '}';
@@ -361,7 +374,22 @@ class _HomeState extends State<Home> {
 
     newStr1 = newStr1.substring(pos4, newStr1.length - 1);
 
-    return newStr1;
+
+    String newStr2 = newStr1.replaceAllMapped(RegExp(r'[\s]{2}[a-zA-Z0-9]+'), (match) {
+      return '"${match.group(0).trim()}"';
+    });
+
+
+    String newStr3 = newStr2.replaceAllMapped(RegExp(r'[:][\s][a-zA-Z0-9]+'), (match) {
+      if(match.group(0).trim().contains(": ")){
+        return ': "${match.group(0).trim().replaceFirst(new RegExp(r':\s'), '')}"';
+
+      }
+
+      return '"${match.group(0).trim().replaceFirst(new RegExp(r':\s'), '')}"';
+    });
+
+    return newStr3;
 
   }
 
