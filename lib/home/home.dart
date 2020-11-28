@@ -31,16 +31,6 @@ class Product
 
 
 class _HomeState extends State<Home> {
- /* 
-  final List<String> imgList = [
-    'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
-    'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80',
-    'https://images.unsplash.com/photo-1523205771623-e0faa4d2813d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89719a0d55dd05e2deae4120227e6efc&auto=format&fit=crop&w=1953&q=80',
-    'https://images.unsplash.com/photo-1508704019882-f9cf40e475b4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=8c6e5e3aba713b17aa1fe71ab4f0ae5b&auto=format&fit=crop&w=1352&q=80',
-    'https://images.unsplash.com/photo-1519985176271-adb1088fa94c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0c8d632e977f94e5d312d9893258f59&auto=format&fit=crop&w=1355&q=80'
-  ];
-*/
 
   final List<Product> imgList = [
       Product('Cloud Travel Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png', '10001'),
@@ -83,14 +73,17 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
+
+    // Initial images for banner 1 and banner 2
     String banner1Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
     String banner2Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
 
+    // Lets see if a campaign from IS needs to replace the images
     String jsonString = "";
     String strName = "";
     String strImage = "";
     String strUrl = ""; 
-    List<dynamic> image_list = [];
+    List<dynamic> imageList = [];
 
     if(_returnMessage() != "No Campaign"){
         jsonString = convertToJson(_returnMessage());
@@ -100,8 +93,8 @@ class _HomeState extends State<Home> {
         jsonObj.forEach((element) {
  
           strName = element["name"].toString();
-          image_list = element["images"];   
-          strImage = image_list[0]["url"];   
+          imageList = element["images"];   
+          strImage = imageList[0]["url"];   
         });        
 
         banner1Path = strImage;
@@ -111,13 +104,6 @@ class _HomeState extends State<Home> {
       jsonString = _returnMessage();
       print('Here in Home.dart: ' + jsonString.toString());
     }
-
-
-    //final String parsedMessage = _returnMessage().toString().split("|")[1];
-
-    //if parsedMessage.contains("promotedProduct"){
-    //  parsePromotedProduct(parsedMessage);
-    //}
 
     return Scaffold(
       drawer: Drawer(
@@ -337,56 +323,45 @@ class _HomeState extends State<Home> {
 
   String convertToJson(strToConvert){
 
-    //var pos1 = strToConvert.indexOf("name");           
-    //var pos2 = strToConvert.indexOf(";", pos1);
-
-    //var newStrA = strToConvert.substring(0, pos1);
-    //var newStrB = strToConvert.substring(pos2 + 1, strToConvert.length);
-
-    //String strToConvert1 = newStrA + newStrB;
-
     String strToConvert1 = strToConvert;
 
+    // Strip out all non json characters and replace them with JSON equivalents where possible
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\('), '[');
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\)'), ']');
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r';'), ',');
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r'<'), '');
     strToConvert1 = strToConvert1.replaceAll(new RegExp(r'>'), '');
-    //strToConvert1 = strToConvert1.replaceAll(new RegExp(r'"'), '');
-
-    //String newStr = strToConvert1.replaceAllMapped(RegExp(r'([_a-zA-Z0-9-.\/:]+)'), (match) {
-    //  return '"${match.group(0)}"';
-    //});
     String newStr = strToConvert1;
 
+    // Remove any commas that come immediately preceeding a close brace.
     String newStr1 = newStr.replaceAllMapped(RegExp(r'(,\s+\})'), (match) {
       return '}';
     });
 
+    // There is no equals sign in json so replace them with colon
     newStr1 = newStr1.replaceAll(new RegExp(r'='), ':');
- 
+
+    // Leading code in the data that needs to be removed
     var pos3 = newStr1.indexOf("[");           
     var pos4 = newStr1.indexOf("[", pos3 + 1);
 
     newStr1 = newStr1.substring(pos4, newStr1.length - 1);
 
-
+    // Make sure we wrap every string with double quotes that currently isnt wrapped 
     String newStr2 = newStr1.replaceAllMapped(RegExp(r'[\s]{2}[a-zA-Z0-9]+'), (match) {
       return '"${match.group(0).trim()}"';
     });
 
-
+    // Make sure we wrap every string with double quotes that currently isnt wrapped     
     String newStr3 = newStr2.replaceAllMapped(RegExp(r'[:][\s][a-zA-Z0-9]+'), (match) {
       if(match.group(0).trim().contains(": ")){
         return ': "${match.group(0).trim().replaceFirst(new RegExp(r':\s'), '')}"';
 
       }
-
       return '"${match.group(0).trim().replaceFirst(new RegExp(r':\s'), '')}"';
     });
 
-    //var pos1 = strToConvert.indexOf(", \"userId\"");           
-
+    //Data sometimes contains a trailing userId var. Need to remove this.
     String newStr4 = "";
 
     if(newStr3.contains(", \"userId\"")){
