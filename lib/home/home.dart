@@ -174,7 +174,8 @@ class _HomeState extends State<Home> {
                                     child: InkWell(
                                       onTap: () {
                                         //_registerTap('viewItem',i.productId, _interactionstudioLogEvent); // View Item
-                                        _registerTap('viewTag',"Fixed Income Securities|3", _interactionstudioLogEvent); //View Tag
+                                        //_registerTap('viewTag',"Fixed Income Securities|3", _interactionstudioLogEvent); //View Tag
+                                        _registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent); //View Category
 
                                         Navigator.pushNamed(
                                             context, '/products',
