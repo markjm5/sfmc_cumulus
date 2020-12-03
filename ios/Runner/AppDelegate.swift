@@ -77,10 +77,11 @@ import Evergage
                 case "setUserId":
                     evergage.userId = description!
                     
-                //case "viewCategory":
-                //    var a:EVGCategory?
-                //    a = description! as? EVGCategory
-                //    evergage.globalContext?.viewCategory(a!)
+                case "viewCategory":
+                    var evgCat:EVGCategory?
+                    evgCat = EVGCategory.init(id:description!)
+
+                    controller.evergageScreen?.viewCategory(evgCat)
                     
                 case "viewTag":
                     
@@ -92,7 +93,7 @@ import Evergage
                   //5=EVGTagTypeKeyword,
                   //6=EVGTagTypeContentClass,
 
-                    var arrTagIdType = description!.split(separator:"|")
+                    let arrTagIdType = description!.split(separator:"|")
                     var tagId: String?
                     var tagType: Int?
 
