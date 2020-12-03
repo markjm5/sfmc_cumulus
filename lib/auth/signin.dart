@@ -18,6 +18,7 @@ class _SignInState extends State<SignIn> {
   final UserCredential userCredential = UserCredential();
   final Function _interactionstudioLogEvent;
   final Function _registerTap;  
+  final String valueToken = 'token-12345';
 
   @override
   _SignInState(this._interactionstudioLogEvent, this._registerTap);
@@ -48,7 +49,7 @@ class _SignInState extends State<SignIn> {
                         return null;
                       },
                       onSaved: (value) {
-                        _registerTap('setUserId',value, _interactionstudioLogEvent);
+                        _registerTap('setUserId',valueToken, _interactionstudioLogEvent);
 
                         setState(() {
                           userCredential.usernameOrEmail = value;
