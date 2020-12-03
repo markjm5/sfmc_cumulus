@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:sfmc_holoapp/auth/auth.dart';
 import 'package:sfmc_holoapp/blocks/auth_block.dart';
-import 'package:sfmc_holoapp/cart.dart';
+//import 'package:sfmc_holoapp/cart.dart';
 import 'package:sfmc_holoapp/categorise.dart';
 import 'package:sfmc_holoapp/home/home.dart';
 import 'package:sfmc_holoapp/localizations.dart';
 import 'package:sfmc_holoapp/product_detail.dart';
 import 'package:sfmc_holoapp/settings.dart';
 import 'package:sfmc_holoapp/shop/shop.dart';
-import 'package:sfmc_holoapp/wishlist.dart';
+//import 'package:sfmc_holoapp/wishlist.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -69,9 +69,9 @@ class _MyAppState extends State<MyApp> {
           '/auth': (BuildContext context) => Auth(_interactionstudioLogEvent, _registerTap),
           '/shop': (BuildContext context) => Shop(),
           '/categorise': (BuildContext context) => Categorise(),
-          '/wishlist': (BuildContext context) => WishList(),
-          '/cart': (BuildContext context) => CartList(),
-          '/settings': (BuildContext context) => Settings(),
+          //'/wishlist': (BuildContext context) => WishList(),
+          //'/cart': (BuildContext context) => CartList(),
+          //'/settings': (BuildContext context) => Settings(),
           '/products': (BuildContext context) => Products()
         },
       ),

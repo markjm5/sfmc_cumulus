@@ -49,7 +49,7 @@ class _ShopState extends State<Shop> {
               },
             )
           ],
-          title: Text('Shop'),
+          title: Text('Products & Services'),
         ),
         body: Builder(
           builder: (BuildContext context) {

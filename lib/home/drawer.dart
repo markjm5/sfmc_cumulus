@@ -41,9 +41,9 @@ class _AppDrawerState extends State<AppDrawer> {
               ListTile(
                 leading: Icon(Icons.shopping_basket,
                     color: Theme.of(context).accentColor),
-                title: Text('Shop'),
-                trailing: Text('New',
-                    style: TextStyle(color: Theme.of(context).primaryColor)),
+                title: Text('Products & Services'),
+                /*trailing: Text('New',
+                    style: TextStyle(color: Theme.of(context).primaryColor)),*/
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, '/shop');
@@ -57,7 +57,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, '/categorise');
                 },
-              ),*/
+              ),
               ListTile(
                 leading:
                     Icon(Icons.favorite, color: Theme.of(context).accentColor),
@@ -93,7 +93,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, '/cart');
                 },
-              ),
+              ),*/
               ListTile(
                 leading: Icon(Icons.lock, color: Theme.of(context).accentColor),
                 title: Text('Login'),
@@ -103,7 +103,7 @@ class _AppDrawerState extends State<AppDrawer> {
                 },
               ),
               Divider(),
-              ListTile(
+              /*ListTile(
                 leading:
                     Icon(Icons.settings, color: Theme.of(context).accentColor),
                 title: Text('Settings'),
@@ -111,7 +111,7 @@ class _AppDrawerState extends State<AppDrawer> {
                   Navigator.pop(context);
                   Navigator.pushNamed(context, '/settings');
                 },
-              ),
+              ),*/
               ListTile(
                 leading: Icon(Icons.exit_to_app,
                     color: Theme.of(context).accentColor),

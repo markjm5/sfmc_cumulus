@@ -122,12 +122,12 @@ class _HomeState extends State<Home> {
                 // Provide a standard title.
                 // title: Text('asdas'),
                 // pinned: true,
-                actions: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.shopping_cart),
-                    onPressed: () {},
-                  )
-                ],
+                //actions: <Widget>[
+                //  IconButton(
+                //    icon: Icon(Icons.shopping_cart),
+                //    onPressed: () {},
+                //  )
+                //],
                 
                 // Allows the user to reveal the app bar if they begin scrolling
                 // back up the list of items.
