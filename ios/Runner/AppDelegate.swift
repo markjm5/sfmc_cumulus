@@ -83,40 +83,34 @@ import Evergage
                 //    evergage.globalContext?.viewCategory(a!)
                     
                 case "viewTag":
+                    
+                  //0=EVGTagTypeBrand,
+                  //1=EVGTagTypeItemClass,
+                  //2=EVGTagTypeGender,
+                  //3=EVGTagTypeStyle,
+                  //4=EVGTagTypeAuthor,
+                  //5=EVGTagTypeKeyword,
+                  //6=EVGTagTypeContentClass,
+
+                    var arrTagIdType = description!.split(separator:"|")
+                    var tagId: String?
+                    var tagType: Int?
+
+                    tagId = String(arrTagIdType[0])
+                    tagType = Int(arrTagIdType[1])
                     var evgTagType:EVGTagType?
                     
-                    //var tagId: String?
-                    //var tagType: Int?
                     // Split description var by pipe, assign each component of string to the above 2 vars
-                    // Replace vars below (id, type) with the above 2 vars
-                    
-                    evgTagType = EVGTagType.init(rawValue: 0) //This integer needs to be dynamic
-                    //evergage.globalContext?.viewTag(EVGTag.init(id:description!, type:evgTagType!))
-                    controller.evergageScreen?.viewTag(EVGTag.init(id:description!, type:evgTagType!))
+                    evgTagType = EVGTagType.init(rawValue: tagType!) //This integer needs to be dynamic
+
+                    controller.evergageScreen?.viewTag(EVGTag.init(id:tagId!, type:evgTagType!))
                     
                 case "viewItem":
                     
-                    //evergage.globalContext?.viewItem(EVGProduct.init(id:description!))
-
                     controller.evergageScreen?.viewItem(EVGProduct.init(id:description!))
                     
-                    //var strCampaignName:String?
-                    
-                    //strCampaignName = controller.campaign?.campaignName
-                    //if strCampaignName == nil {
-                    //    strResult = "Campaign Name: NIL"
-                    //}
-                    //else{
-                    //    strResult = "Campaign Name: " + strCampaignName!
-                        
-                    //}
-                    //case "viewItemDetail":
-                    //  var a:EVGItem?
-                    //  a = description! as? EVGItem
-                    //  evergage.globalContext?.viewItemDetail(a!, "blah")
-                    
                 default:
-                    //evergage.globalContext?.trackAction(description!)
+
                     controller.evergageScreen?.trackAction(description!)
                     
                 }
