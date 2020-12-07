@@ -11,6 +11,11 @@ class Shop extends StatefulWidget {
 }
 
 class _ShopState extends State<Shop> {
+
+  //final Function interactionstudioLogEvent;
+  //final Function registerTap;
+  //final Function returnMessage;
+
 /*  final List<Map<dynamic, dynamic>> products = [
     {'name': 'IPhone', 'rating': 3.0, 'image': 'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80'},
     {'name': 'IPhone X 2', 'rating': 3.0, 'image': 'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80'},
@@ -100,6 +105,8 @@ class _ShopState extends State<Shop> {
                                     child: InkWell(
                                       onTap: () {
                                         print('Card tapped.');
+                                       //_registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent, 'zone2');
+
                                       },
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,7 +127,7 @@ class _ShopState extends State<Shop> {
                                             padding: const EdgeInsets.only(top: 5.0),
                                             child: ListTile(
                                               title: Text(
-                                                'Two Gold Rings',
+                                                'Citi Credit Card',
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 16
