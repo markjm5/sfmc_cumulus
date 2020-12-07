@@ -36,7 +36,7 @@ class _ShopState extends State<Shop> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      length: 1,
       child: Scaffold(
         key: scaffoldKey,
         appBar: AppBar(
@@ -54,125 +54,19 @@ class _ShopState extends State<Shop> {
         body: Builder(
           builder: (BuildContext context) {
             return DefaultTabController(
-                length: 2,
+                length: 1,
                 child: Column(
                   children: <Widget>[
                     Container(
                       constraints: BoxConstraints(maxHeight: 150.0),
                       child: Material(
                         color: Theme.of(context).accentColor,
-                        child: TabBar(
-                          indicatorColor: Colors.blue,
-                          tabs: [
-                            Tab(icon: Icon(Icons.view_list)),
-                            Tab(icon: Icon(Icons.grid_on)),
-                          ],
-                        ),
                       ),
                     ),
                     Expanded(
                       child: TabBarView(
                         children: [
-                          Container(
-                            child: ListView(
-                              children: products.map((product) {
-                                return Builder(
-                                  builder: (BuildContext context) {
-                                    return  InkWell(
-                                      onTap: () {
-                                        print('Card tapped.');
-                                      },
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Divider(
-                                            height: 0,
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                                            child: ListTile(
-                                              trailing: Icon(Icons.navigate_next),
-                                              leading: ClipRRect(
-                                                borderRadius: BorderRadius.circular(5.0),
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                      color: Colors.blue
-                                                  ),
-                                                  child: CachedNetworkImage(
-                                                    fit: BoxFit.cover,
-                                                    imageUrl: product['image'],
-                                                    placeholder: (context, url) => Center(
-                                                        child: CircularProgressIndicator()
-                                                    ),
-                                                    errorWidget: (context, url, error) => new Icon(Icons.error),
-                                                  ),
-                                                ),
-                                              ),
-                                              title: Text(
-                                                product['name'],
-                                                style: TextStyle(
-                                                    fontSize: 14
-                                                ),
-                                              ),
-                                              subtitle: Column(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                children: <Widget>[
-                                                  Row(
-                                                    children: <Widget>[
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(top: 2.0, bottom: 1),
-                                                        child: Text('\$200', style: TextStyle(
-                                                          color: Theme.of(context).accentColor,
-                                                          fontWeight: FontWeight.w700,
-                                                        )),
-                                                      ),
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(left: 6.0),
-                                                        child: Text('(\$400)', style: TextStyle(
-                                                            fontWeight: FontWeight.w700,
-                                                            fontStyle: FontStyle.italic,
-                                                            color: Colors.grey,
-                                                            decoration: TextDecoration.lineThrough
-                                                        )),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: <Widget>[
-                                                      SmoothStarRating(
-                                                          allowHalfRating: false,
-                                                          onRated: (v) {
-                                                            product['rating'] = v;
-                                                            setState(() {});
-                                                          },
-                                                          starCount: 5,
-                                                          rating: product['rating'],
-                                                          size: 16.0,
-                                                          color: Colors.amber,
-                                                          borderColor: Colors.amber,
-                                                          spacing:0.0
-                                                      ),
-                                                      Padding(
-                                                        padding: const EdgeInsets.only(left: 6.0),
-                                                        child: Text('(4)', style: TextStyle(
-                                                            fontWeight: FontWeight.w300,
-                                                            color: Theme.of(context).primaryColor
-                                                        )),
-                                                      )
-                                                    ],
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              }).toList(),
-                            ),
-                          ),
+                         
                           Container(
                             child: GridView.count(
                               shrinkWrap: true,
