@@ -85,12 +85,14 @@ class _HomeState extends State<Home> {
     List<dynamic> imageList = [];
 
     if(_returnMessage() != "No Campaign"){
-        jsonString = convertToJson(_returnMessage());
+        jsonString = AppLocalizations.of(context).convertToJson(_returnMessage());
+        //jsonString = convertToJson(_returnMessage());
 
-        List<dynamic> jsonObj = jsonDecode(jsonString);
+        //List<dynamic> jsonObj = jsonDecode(jsonString);
+        AppLocalizations.of(context).zone1Campaign = jsonDecode(jsonString);
 
-        jsonObj.forEach((element) {
- 
+        //jsonObj.forEach((element) {
+        AppLocalizations.of(context).zone1Campaign.forEach((element) {
           strName = element["name"].toString();
           imageList = element["images"];   
           strImage = imageList[0]["url"];   
@@ -322,7 +324,7 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
+/*
   String convertToJson(strToConvert){
 
     String strToConvert1 = strToConvert;
@@ -380,4 +382,5 @@ class _HomeState extends State<Home> {
     return "{}";
 
   }
+  */
 }

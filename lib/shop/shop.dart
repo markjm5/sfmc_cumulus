@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:sfmc_holoapp/localizations.dart';
 
 import 'search.dart';
 
@@ -34,10 +35,26 @@ class _ShopState extends State<Shop> {
 
 
   String banner1Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
+  String banner2Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
+  
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+
+    String strName = "";
+    String strImage = "";
+    List<dynamic> imageList = [];
+    if(AppLocalizations.of(context).zone1Campaign != null){
+      AppLocalizations.of(context).zone1Campaign.forEach((element) {
+        strName = element["name"].toString();
+        imageList = element["images"];   
+        strImage = imageList[0]["url"];   
+      });
+    }
+
+    banner1Path = strImage;
+
     return DefaultTabController(
       length: 1,
       child: Scaffold(
@@ -165,6 +182,7 @@ class _ShopState extends State<Shop> {
                                     ),
                                   ),
                                 );
+
                               }),
                             ),
                           ),
@@ -182,7 +200,7 @@ class _ShopState extends State<Shop> {
                       child: Padding(
                         padding: EdgeInsets.only(
                             top: 1.0, left: 8.0, right: 8.0, bottom: 10),
-                        child: new Image.network(banner1Path),
+                        child: new Image.network(banner2Path),
                       ),
                     ),
 
