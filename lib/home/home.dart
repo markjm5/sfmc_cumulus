@@ -33,10 +33,9 @@ class Product
 class _HomeState extends State<Home> {
 
   final List<Product> imgList = [
-      Product('Cloud Travel Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png', '10001'),
-      Product('Cloud Plus Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png', '10001'),
-      Product('Freedom Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png', '10001'),
-      Product('Student Credit Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-student-no-logo.png', '10001'),      
+      Product('Citi PremierMiles Card','https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-premiermiles-visa.jpg', 'Citi PremierMiles Card'),
+      Product('Life Insurance Solutions','https://www.citibank.com.sg/gcb/insurance/images/thumbnails/life_insurance_solutions.jpg', 'Life Insurance Solutions'),
+      Product('Citibank Premium Account','https://www.citibank.com.sg/citi-priority/images/home/create_wealth.jpg', 'Citibank Premium Account'),
   ];
 
   final List<String> imgList2 = [
@@ -64,7 +63,7 @@ class _HomeState extends State<Home> {
   @override
   void initState(){
 
-    _registerTap('trackAction','App: Homepage Visit', _interactionstudioLogEvent);
+    _registerTap('trackAction','App: Homepage Visit', _interactionstudioLogEvent, 'zone1');
 
    super.initState();
 
@@ -173,9 +172,9 @@ class _HomeState extends State<Home> {
                                     clipBehavior: Clip.antiAlias,
                                     child: InkWell(
                                       onTap: () {
-                                        //_registerTap('viewItem',i.productId, _interactionstudioLogEvent); // View Item
-                                        //_registerTap('viewTag',"Fixed Income Securities|3", _interactionstudioLogEvent); //View Tag
-                                        _registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent); //View Category
+                                        _registerTap('viewItem',i.productId, _interactionstudioLogEvent, 'zone1'); // View Item
+                                        _registerTap('viewTag',"Fixed Income Securities|3", _interactionstudioLogEvent, 'zone1'); //View Tag
+                                       // _registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent); //View Category
 
                                         Navigator.pushNamed(
                                             context, '/products',

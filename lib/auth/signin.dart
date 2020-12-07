@@ -51,7 +51,7 @@ class _SignInState extends State<SignIn> {
                         return null;
                       },
                       onSaved: (value) {
-                        _registerTap('setUserId',valueToken, _interactionstudioLogEvent);
+                        _registerTap('setUserId',valueToken, _interactionstudioLogEvent, 'zone1');
 
                         setState(() {
                           userCredential.usernameOrEmail = value;

@@ -83,8 +83,8 @@ class _MyAppState extends State<MyApp> {
       return _message;
   }
 
-  void _registerTap(String tapEvent, String tapDescription, Function interactionstudioLogEvent) {
-    interactionstudioLogEvent(tapEvent, tapDescription).then((String message){
+  void _registerTap(String tapEvent, String tapDescription, Function interactionstudioLogEvent, String tapZone) {
+    interactionstudioLogEvent(tapEvent, tapDescription, tapZone).then((String message){
       setState(() {
         _message = message;        
       });   
@@ -109,10 +109,11 @@ class _MyAppState extends State<MyApp> {
     return value;
   }
 
-  Future<String> _interactionstudioLogEvent(String tapEvent, String tapDescription) async {
+  Future<String> _interactionstudioLogEvent(String tapEvent, String tapDescription, String tapZone) async {
     var sendMap = <String, dynamic> {
       'event': tapEvent,
       'description': tapDescription,
+      'zone': tapZone,
     };
 
     String value;

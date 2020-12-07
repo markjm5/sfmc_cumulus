@@ -28,7 +28,7 @@ import Evergage
         }
         
         // The target string uniquely identifies the expected data schema - here, a featured product:
-        controller.evergageScreen?.setCampaignHandler(handler, forTarget: "zone1")
+        //controller.evergageScreen?.setCampaignHandler(handler, forTarget: "zone1")
 
         let CHANNEL = FlutterMethodChannel(name: "demo.sfmc_cumulus/info", binaryMessenger: controller.binaryMessenger)
                 
@@ -65,12 +65,19 @@ import Evergage
                 
                 var event: String?
                 var description: String?
+                var zone: String?
+
                 
                 if let args = methodCall.arguments as? Dictionary<String, AnyObject>
                 {
                     event = args["event"] as? String
                     description = args["description"] as? String
+                    zone = args["zone"] as? String
+
+                    // The target string uniquely identifies the expected data schema - here, a featured product:
+                    controller.evergageScreen?.setCampaignHandler(handler, forTarget: zone!)
                 }
+
                 
                 switch event
                 {
