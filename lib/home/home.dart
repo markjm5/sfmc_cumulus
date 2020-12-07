@@ -99,7 +99,7 @@ class _HomeState extends State<Home> {
         });        
 
         banner1Path = strImage;
-        banner2Path = strImage;
+        //banner2Path = strImage;
     }
     else{
       jsonString = _returnMessage();
