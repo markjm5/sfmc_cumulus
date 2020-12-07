@@ -65,9 +65,9 @@ class _MyAppState extends State<MyApp> {
             fontFamily: locale.languageCode == 'ar' ? 'Dubai' : 'Lato'),
         initialRoute: '/',
         routes: <String, WidgetBuilder>{
-          '/': (BuildContext context) => Home(_interactionstudioLogEvent, _registerTap, _returnMessage),
+          '/': (BuildContext context) => Home(_interactionstudioLogEvent, _registerTap, _returnMessage, _setReturnMessage),
           '/auth': (BuildContext context) => Auth(_interactionstudioLogEvent, _registerTap),
-          '/shop': (BuildContext context) => Shop(),
+          '/shop': (BuildContext context) => Shop(_interactionstudioLogEvent, _registerTap, _returnMessage, _setReturnMessage),
           '/categorise': (BuildContext context) => Categorise(),
           //'/wishlist': (BuildContext context) => WishList(),
           //'/cart': (BuildContext context) => CartList(),
@@ -82,6 +82,12 @@ class _MyAppState extends State<MyApp> {
 
       return _message;
   }
+
+  void _setReturnMessage(String newMessage){
+
+      _message = newMessage;
+  }
+
 
   void _registerTap(String tapEvent, String tapDescription, Function interactionstudioLogEvent, String tapZone) {
     interactionstudioLogEvent(tapEvent, tapDescription, tapZone).then((String message){

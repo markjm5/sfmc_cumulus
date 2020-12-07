@@ -7,7 +7,7 @@ import 'package:sfmc_holoapp/localizations_delegate.dart';
 class AppLocalizations {
   final Locale locale;
   List<dynamic> zone1Campaign;
-  List<dynamic> zone2Campaign;
+  Map zone2Campaign;
 
   AppLocalizations(this.locale);
 
@@ -68,7 +68,9 @@ String convertToJson(strToConvert){
       var pos3 = newStr1.indexOf("[");           
       var pos4 = newStr1.indexOf("[", pos3 + 1);
 
-      newStr1 = newStr1.substring(pos4, newStr1.length - 1);
+      if(pos3 >= 0 && pos4 > 0 ){
+          newStr1 = newStr1.substring(pos4, newStr1.length - 1);
+      }
 
       // Make sure we wrap every string with double quotes that currently isnt wrapped 
       String newStr2 = newStr1.replaceAllMapped(RegExp(r'[\s]{2}[a-zA-Z0-9]+'), (match) {

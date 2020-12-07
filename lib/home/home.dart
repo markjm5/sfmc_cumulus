@@ -12,11 +12,12 @@ class Home extends StatefulWidget {
   final Function interactionstudioLogEvent;
   final Function registerTap;
   final Function returnMessage;
+  final Function setReturnMessage;
 
-  Home(this.interactionstudioLogEvent, this.registerTap, this.returnMessage);
+  Home(this.interactionstudioLogEvent, this.registerTap, this.returnMessage, this.setReturnMessage);
 
   @override
-  _HomeState createState() => _HomeState(interactionstudioLogEvent, registerTap, returnMessage);
+  _HomeState createState() => _HomeState(interactionstudioLogEvent, registerTap, returnMessage, setReturnMessage);
 }
 
 
@@ -56,9 +57,10 @@ class _HomeState extends State<Home> {
   final Function _interactionstudioLogEvent;
   final Function _registerTap;
   final Function _returnMessage; 
+  final Function _setReturnMessage;
 
   @override
-  _HomeState(this._interactionstudioLogEvent, this._registerTap, this._returnMessage);
+  _HomeState(this._interactionstudioLogEvent, this._registerTap, this._returnMessage, this._setReturnMessage);
 
   @override
   void initState(){
@@ -99,6 +101,7 @@ class _HomeState extends State<Home> {
         });        
 
         banner1Path = strImage;
+        _setReturnMessage("No Campaign");
         //banner2Path = strImage;
     }
     else{

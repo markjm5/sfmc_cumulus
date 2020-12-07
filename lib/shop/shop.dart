@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
@@ -6,15 +8,24 @@ import 'package:sfmc_holoapp/localizations.dart';
 import 'search.dart';
 
 class Shop extends StatefulWidget {
+
+  final Function interactionstudioLogEvent;
+  final Function registerTap;
+  final Function returnMessage;
+  final Function setReturnMessage;
+
+  Shop(this.interactionstudioLogEvent, this.registerTap, this.returnMessage, this.setReturnMessage);
+
   @override
-  _ShopState createState() => _ShopState();
+  _ShopState createState() => _ShopState(interactionstudioLogEvent, registerTap, returnMessage, setReturnMessage);
 }
 
 class _ShopState extends State<Shop> {
 
-  //final Function interactionstudioLogEvent;
-  //final Function registerTap;
-  //final Function returnMessage;
+  final Function _interactionstudioLogEvent;
+  final Function _registerTap;
+  final Function _returnMessage;
+  final Function _setReturnMessage;
 
 /*  final List<Map<dynamic, dynamic>> products = [
     {'name': 'IPhone', 'rating': 3.0, 'image': 'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80'},
@@ -43,13 +54,17 @@ class _ShopState extends State<Shop> {
   String banner2Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
   
 
+  @override
+  _ShopState(this._interactionstudioLogEvent, this._registerTap, this._returnMessage, this._setReturnMessage);
+
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-
+    String jsonString = "";
     String strName = "";
     String strImage = "";
     List<dynamic> imageList = [];
+
     if(AppLocalizations.of(context).zone1Campaign != null){
       AppLocalizations.of(context).zone1Campaign.forEach((element) {
         strName = element["name"].toString();
@@ -59,6 +74,32 @@ class _ShopState extends State<Shop> {
     }
 
     banner1Path = strImage;
+
+    if(_returnMessage() != "No Campaign"){
+        jsonString = AppLocalizations.of(context).convertToJson(_returnMessage());
+        //jsonString = convertToJson(_returnMessage());
+
+        jsonString = jsonString.replaceAll(new RegExp(r'\['), '{');
+        jsonString = jsonString.replaceAll(new RegExp(r'\]'), '}');
+
+        final decodedJson = jsonDecode(jsonString);
+        //List<dynamic> jsonObj = jsonDecode(jsonString);
+        AppLocalizations.of(context).zone2Campaign = decodedJson;
+
+        //jsonObj.forEach((element) {
+       // AppLocalizations.of(context).zone2Campaign.forEach((element) {
+       strImage = decodedJson["Image1"];   
+       // });        
+
+        banner2Path = 'https://cumulus-fs.s3.amazonaws.com/images/banners/' + strImage;
+        _setReturnMessage("No Campaign");
+        //banner2Path = strImage;
+    }
+    else{
+      jsonString = _returnMessage();
+      print('Here in Home.dart: ' + jsonString.toString());
+    }
+
 
     return DefaultTabController(
       length: 1,
@@ -104,8 +145,8 @@ class _ShopState extends State<Shop> {
                                     clipBehavior: Clip.antiAlias,
                                     child: InkWell(
                                       onTap: () {
-                                        print('Card tapped.');
-                                       //_registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent, 'zone2');
+                                        //print('Card tapped.');
+                                       _registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent, 'zone2');
 
                                       },
                                       child: Column(
