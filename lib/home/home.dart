@@ -327,53 +327,57 @@ class _HomeState extends State<Home> {
 
     String strToConvert1 = strToConvert;
 
-    // Strip out all non json characters and replace them with JSON equivalents where possible
-    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\('), '[');
-    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\)'), ']');
-    strToConvert1 = strToConvert1.replaceAll(new RegExp(r';'), ',');
-    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'<'), '');
-    strToConvert1 = strToConvert1.replaceAll(new RegExp(r'>'), '');
-    String newStr = strToConvert1;
+    if(strToConvert1.isNotEmpty){
 
-    // Remove any commas that come immediately preceeding a close brace.
-    String newStr1 = newStr.replaceAllMapped(RegExp(r'(,\s+\})'), (match) {
-      return '}';
-    });
+      // Strip out all non json characters and replace them with JSON equivalents where possible
+      strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\('), '[');
+      strToConvert1 = strToConvert1.replaceAll(new RegExp(r'\)'), ']');
+      strToConvert1 = strToConvert1.replaceAll(new RegExp(r';'), ',');
+      strToConvert1 = strToConvert1.replaceAll(new RegExp(r'<'), '');
+      strToConvert1 = strToConvert1.replaceAll(new RegExp(r'>'), '');
+      String newStr = strToConvert1;
 
-    // There is no equals sign in json so replace them with colon
-    newStr1 = newStr1.replaceAll(new RegExp(r'='), ':');
+      // Remove any commas that come immediately preceeding a close brace.
+      String newStr1 = newStr.replaceAllMapped(RegExp(r'(,\s+\})'), (match) {
+        return '}';
+      });
 
-    // Leading code in the data that needs to be removed
-    var pos3 = newStr1.indexOf("[");           
-    var pos4 = newStr1.indexOf("[", pos3 + 1);
+      // There is no equals sign in json so replace them with colon
+      newStr1 = newStr1.replaceAll(new RegExp(r'='), ':');
 
-    newStr1 = newStr1.substring(pos4, newStr1.length - 1);
+      // Leading code in the data that needs to be removed
+      var pos3 = newStr1.indexOf("[");           
+      var pos4 = newStr1.indexOf("[", pos3 + 1);
 
-    // Make sure we wrap every string with double quotes that currently isnt wrapped 
-    String newStr2 = newStr1.replaceAllMapped(RegExp(r'[\s]{2}[a-zA-Z0-9]+'), (match) {
-      return '"${match.group(0).trim()}"';
-    });
+      newStr1 = newStr1.substring(pos4, newStr1.length - 1);
 
-    // Make sure we wrap every string with double quotes that currently isnt wrapped     
-    String newStr3 = newStr2.replaceAllMapped(RegExp(r'[:][\s][a-zA-Z0-9]+'), (match) {
-      if(match.group(0).trim().contains(": ")){
-        return ': "${match.group(0).trim().replaceFirst(new RegExp(r':\s'), '')}"';
+      // Make sure we wrap every string with double quotes that currently isnt wrapped 
+      String newStr2 = newStr1.replaceAllMapped(RegExp(r'[\s]{2}[a-zA-Z0-9]+'), (match) {
+        return '"${match.group(0).trim()}"';
+      });
 
+      // Make sure we wrap every string with double quotes that currently isnt wrapped     
+      String newStr3 = newStr2.replaceAllMapped(RegExp(r'[:][\s][a-zA-Z0-9]+'), (match) {
+        if(match.group(0).trim().contains(": ")){
+          return ': "${match.group(0).trim().replaceFirst(new RegExp(r':\s'), '')}"';
+
+        }
+        return '"${match.group(0).trim().replaceFirst(new RegExp(r':\s'), '')}"';
+      });
+
+      //Data sometimes contains a trailing userId var. Need to remove this.
+      String newStr4 = "";
+
+      if(newStr3.contains(", \"userId\"")){
+        var pos1 = newStr3.indexOf(", \"userId\"");           
+        newStr4 = newStr3.substring(0, pos1);
+      }else{
+        newStr4 = newStr3;
       }
-      return '"${match.group(0).trim().replaceFirst(new RegExp(r':\s'), '')}"';
-    });
-
-    //Data sometimes contains a trailing userId var. Need to remove this.
-    String newStr4 = "";
-
-    if(newStr3.contains(", \"userId\"")){
-      var pos1 = newStr3.indexOf(", \"userId\"");           
-      newStr4 = newStr3.substring(0, pos1);
-    }else{
-      newStr4 = newStr3;
+      
+      return newStr4;
     }
-    
-    return newStr4;
-  }
+    return "{}";
 
+  }
 }

@@ -25,12 +25,15 @@ class _ShopState extends State<Shop> {
 */
 
   final List<Map<dynamic, dynamic>> products = [
-    {'name': 'IPhone', 'rating': 3.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png'},
-    {'name': 'IPhone X 2', 'rating': 3.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png'},
-    {'name': 'IPhone 11', 'rating': 4.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png'},
-    {'name': 'IPhone 11', 'rating': 4.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-student-no-logo.png'},
+    {'name': 'Citi Rewards Card', 'rating': 5.0, 'image': 'https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-rewards-visa-card.png'},
+    {'name': 'Citi Lazada Card', 'rating': 5.0, 'image': 'https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-lazada-visa.jpg'},
+    {'name': 'Citi Cash Back Card', 'rating': 5.0, 'image': 'https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-cashback-master.jpg'},
+    {'name': 'Citi Clear Card', 'rating': 5.0, 'image': 'https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-clear-visa.jpg'},
+
   ];
 
+
+  String banner1Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
 
   final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
   @override
@@ -168,6 +171,21 @@ class _ShopState extends State<Shop> {
                         ],
                       ),
                     ),
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 1.0, left: 8.0, right: 8.0, bottom: 10),
+                        child: new Image.network(banner1Path),
+                      ),
+                    ),
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 1.0, left: 8.0, right: 8.0, bottom: 10),
+                        child: new Image.network(banner1Path),
+                      ),
+                    ),
+
                   ],
                 ));
           },
