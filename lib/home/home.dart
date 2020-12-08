@@ -85,6 +85,7 @@ class _HomeState extends State<Home> {
     String strImage = "";
     String strUrl = ""; 
     List<dynamic> imageList = [];
+    int promoCount = 0;
 
     if(_returnMessage() != "No Campaign"){
         jsonString = AppLocalizations.of(context).convertToJson(_returnMessage());
@@ -95,10 +96,13 @@ class _HomeState extends State<Home> {
 
         //jsonObj.forEach((element) {
         AppLocalizations.of(context).zone1Campaign.forEach((element) {
+          promoCount++;
           strName = element["name"].toString();
           imageList = element["images"];   
           strImage = imageList[0]["url"];   
         });        
+
+        print('PromotCount: ' + promoCount.toString());
 
         banner1Path = strImage;
         _setReturnMessage("No Campaign");
