@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:sfmc_holoapp/localizations.dart';
 
 class HomeSlider extends StatefulWidget {
   @override
@@ -19,13 +20,32 @@ class _HomeSliderState extends State<HomeSlider> {
   ];
   */
 
-  final List<String> imgList = [
-    'https://cumulus-fs.s3.amazonaws.com/images/banners/hero-personal-credit-cards-default-BG-image.jpg',
-    'https://cumulus-fs.s3.amazonaws.com/images/banners/hero-corporate-home-default-BG-image.jpg',
+    List<dynamic> imgList = [
+      'https://cumulus-fs.s3.amazonaws.com/images/banners/hero-personal-credit-cards-default-BG-image.jpg',
+      'https://cumulus-fs.s3.amazonaws.com/images/banners/hero-corporate-home-default-BG-image.jpg'
     ];
 
   @override
   Widget build(BuildContext context) {
+
+    String jsonString = "";
+    String strName = "";
+    String strImage = "";
+    List<dynamic> imageColl = [];
+
+    if(AppLocalizations.of(context).zone1Campaign != null){
+
+      AppLocalizations.of(context).zone1Campaign.forEach((element) {
+        imgList.remove('https://cumulus-fs.s3.amazonaws.com/images/banners/hero-personal-credit-cards-default-BG-image.jpg');
+        imgList.remove('https://cumulus-fs.s3.amazonaws.com/images/banners/hero-corporate-home-default-BG-image.jpg');
+
+        //strName = element["name"].toString();
+        imageColl = element["images"];   
+        strImage = imageColl[0]["url"];   
+        imgList.add(strImage);
+      });
+    }
+
     return SizedBox(
       width: double.infinity,
       height: double.infinity,
