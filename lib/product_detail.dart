@@ -40,7 +40,7 @@ class Products extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(top: 15, bottom: 15),
                           child: Text(
-                            'Product Title Name',
+                            'Citi Card',
                             style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -119,7 +119,7 @@ class Products extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.only(bottom: 10.0),
                                 child: Text(
-                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. but also the leap into electronic typesetting Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
+                                  "Citi miles never expire so you can use them whenever you want.",
                                   style: TextStyle(color: Colors.black, fontSize: 16),
                                 ),
                               )

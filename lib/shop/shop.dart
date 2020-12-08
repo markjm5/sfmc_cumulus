@@ -50,8 +50,8 @@ class _ShopState extends State<Shop> {
   ];
 
 
-  String banner1Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
-  String banner2Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
+  String banner1Path = '';
+  String banner2Path = '';
   
 
   @override
@@ -74,7 +74,7 @@ class _ShopState extends State<Shop> {
     }
 
     banner1Path = strImage;
-
+    /*
     if(_returnMessage() != "No Campaign"){
         jsonString = AppLocalizations.of(context).convertToJson(_returnMessage());
         //jsonString = convertToJson(_returnMessage());
@@ -92,14 +92,14 @@ class _ShopState extends State<Shop> {
        // });        
 
         banner2Path = 'https://cumulus-fs.s3.amazonaws.com/images/banners/' + strImage;
-        _setReturnMessage("No Campaign");
+        //_setReturnMessage("No Campaign");
         //banner2Path = strImage;
     }
     else{
       jsonString = _returnMessage();
       print('Here in Home.dart: ' + jsonString.toString());
     }
-
+  */
 
     return DefaultTabController(
       length: 1,
@@ -145,8 +145,8 @@ class _ShopState extends State<Shop> {
                                     clipBehavior: Clip.antiAlias,
                                     child: InkWell(
                                       onTap: () {
-                                        //print('Card tapped.');
-                                       _registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent, 'zone2');
+                                        print('Card tapped.');
+                                       //_registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent, 'zone2');
 
                                       },
                                       child: Column(
