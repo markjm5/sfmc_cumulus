@@ -96,13 +96,16 @@ class _HomeState extends State<Home> {
 
         //jsonObj.forEach((element) {
         AppLocalizations.of(context).zone1Campaign.forEach((element) {
+          if(promoCount == 0){
+            strName = element["name"].toString();
+            imageList = element["images"];   
+            strImage = imageList[0]["url"];   
+          }
           promoCount++;
-          strName = element["name"].toString();
-          imageList = element["images"];   
-          strImage = imageList[0]["url"];   
+
         });        
 
-        print('PromotCount: ' + promoCount.toString());
+        print('Promo Count: ' + promoCount.toString());
 
         banner1Path = strImage;
         _setReturnMessage("No Campaign");
