@@ -21,6 +21,7 @@ class _HomeSliderState extends State<HomeSlider> {
   */
 
     List<dynamic> imgList = [
+      'https://cumulus-fs.s3.amazonaws.com/images/banners/hero-personal-homepage-default-BG-image.jpg',
       'https://cumulus-fs.s3.amazonaws.com/images/banners/hero-personal-credit-cards-default-BG-image.jpg',
       'https://cumulus-fs.s3.amazonaws.com/images/banners/hero-corporate-home-default-BG-image.jpg'
     ];
@@ -36,6 +37,7 @@ class _HomeSliderState extends State<HomeSlider> {
     if(AppLocalizations.of(context).zone1Campaign != null){
 
       AppLocalizations.of(context).zone1Campaign.forEach((element) {
+        imgList.remove('https://cumulus-fs.s3.amazonaws.com/images/banners/hero-personal-homepage-default-BG-image.jpg');
         imgList.remove('https://cumulus-fs.s3.amazonaws.com/images/banners/hero-personal-credit-cards-default-BG-image.jpg');
         imgList.remove('https://cumulus-fs.s3.amazonaws.com/images/banners/hero-corporate-home-default-BG-image.jpg');
 

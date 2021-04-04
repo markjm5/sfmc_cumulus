@@ -26,8 +26,8 @@ class _ShopState extends State<Shop> {
   final Function _registerTap;
   final Function _returnMessage;
   final Function _setReturnMessage;
-
-/*  final List<Map<dynamic, dynamic>> products = [
+/*
+  final List<Map<dynamic, dynamic>> products = [
     {'name': 'IPhone', 'rating': 3.0, 'image': 'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80'},
     {'name': 'IPhone X 2', 'rating': 3.0, 'image': 'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80'},
     {'name': 'IPhone 11', 'rating': 4.0, 'image': 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=94a1e718d89ca60a6337a6008341ca50&auto=format&fit=crop&w=1950&q=80'},
@@ -46,7 +46,6 @@ class _ShopState extends State<Shop> {
     {'name': 'Cloud Travel Card', 'rating': 5.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png'},
     {'name': 'Cloud Plus Card', 'rating': 5.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png'},
     {'name': 'Student Rewards Card', 'rating': 5.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-student-no-logo.png'},
-
   ];
 
 
@@ -72,8 +71,11 @@ class _ShopState extends State<Shop> {
         strImage = imageList[0]["url"];   
       });
     }
-
-    banner1Path = strImage;
+    if(strImage.length > 0){
+        banner1Path = strImage;
+    }else{
+        banner1Path = 'https://cumulus-fs.s3.amazonaws.com/images/banners/hero-personal-banking-default-BG-image.jpg';
+    }
     /*
     if(_returnMessage() != "No Campaign"){
         jsonString = AppLocalizations.of(context).convertToJson(_returnMessage());
@@ -129,6 +131,13 @@ class _ShopState extends State<Shop> {
                         color: Theme.of(context).accentColor,
                       ),
                     ),
+                    Container(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 1.0, left: 8.0, right: 8.0, bottom: 10),
+                        child: new Image.network(banner1Path),
+                      ),
+                    ),
                     Expanded(
                       child: TabBarView(
                         children: [
@@ -168,13 +177,13 @@ class _ShopState extends State<Shop> {
                                             padding: const EdgeInsets.only(top: 5.0),
                                             child: ListTile(
                                               title: Text(
-                                                'Citi Credit Card',
+                                                products[index]['name'],
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 16
                                                 ),
                                               ),
-                                              subtitle: Column(
+                                              /*subtitle: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.start,
                                                 children: <Widget>[
                                                   Row(
@@ -197,7 +206,7 @@ class _ShopState extends State<Shop> {
                                                       )
                                                     ],
                                                   ),
-                                                  Row(
+                                                 Row(
                                                     children: <Widget>[
                                                       SmoothStarRating(
                                                           allowHalfRating: false,
@@ -222,7 +231,7 @@ class _ShopState extends State<Shop> {
                                                     ],
                                                   )
                                                 ],
-                                              ),
+                                              ),*/
                                             ),
                                           )
                                         ],
@@ -237,14 +246,14 @@ class _ShopState extends State<Shop> {
                         ],
                       ),
                     ),
-                    Container(
+                    /*Container(
                       child: Padding(
                         padding: EdgeInsets.only(
                             top: 1.0, left: 8.0, right: 8.0, bottom: 10),
                         child: new Image.network(banner1Path),
                       ),
                     ),
-                    /*Container(
+                    Container(
                       child: Padding(
                         padding: EdgeInsets.only(
                             top: 1.0, left: 8.0, right: 8.0, bottom: 10),
