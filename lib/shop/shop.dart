@@ -244,13 +244,13 @@ class _ShopState extends State<Shop> {
                         child: new Image.network(banner1Path),
                       ),
                     ),
-                    Container(
+                    /*Container(
                       child: Padding(
                         padding: EdgeInsets.only(
                             top: 1.0, left: 8.0, right: 8.0, bottom: 10),
                         child: new Image.network(banner2Path),
                       ),
-                    ),
+                    ),*/
 
                   ],
                 ));

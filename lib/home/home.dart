@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
   @override
   void initState(){
 
-    _registerTap('trackAction','App: Homepage Visit', _interactionstudioLogEvent, 'zone1');
+    _registerTap('trackAction','App: Homepage Visit', _interactionstudioLogEvent, 'container1');
 
    super.initState();
 
@@ -76,7 +76,8 @@ class _HomeState extends State<Home> {
 
 
     // Initial images for banner 1 and banner 2
-    String banner1Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
+    //String banner1Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
+    String banner1Path = 'https://image.s4.sfmc-content.com/lib/fe9215747263077a75/m/1/8a042794-9597-4ac4-9899-7da3257fbabd.jpeg';
     String banner2Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
 
     // Lets see if a campaign from IS needs to replace the images
@@ -184,8 +185,8 @@ class _HomeState extends State<Home> {
                                     clipBehavior: Clip.antiAlias,
                                     child: InkWell(
                                       onTap: () {
-                                        _registerTap('viewItem',i.productId, _interactionstudioLogEvent, 'zone1'); // View Item
-                                        _registerTap('viewTag',"Fixed Income Securities|3", _interactionstudioLogEvent, 'zone1'); //View Tag
+                                        _registerTap('viewItem',i.productId, _interactionstudioLogEvent, 'container1'); // View Item
+                                        _registerTap('viewTag',"Fixed Income Securities|3", _interactionstudioLogEvent, 'container1'); //View Tag
                                        // _registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent); //View Category
 
                                         Navigator.pushNamed(
