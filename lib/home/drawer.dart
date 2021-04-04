@@ -22,7 +22,7 @@ class _AppDrawerState extends State<AppDrawer> {
             )),
             currentAccountPicture: CircleAvatar(
               backgroundImage: NetworkImage(
-                  'https://avatars2.githubusercontent.com/u/2400215?s=120&v=4'),
+                  'https://cdn1.iconfinder.com/data/icons/avatars-and-biometry-data/154/online-status-web-person-avatar-512.png'),
             ),
             accountEmail: Text(auth.user['user_email']),
             accountName: Text(auth.user['user_display_name']),

@@ -42,10 +42,10 @@ class _ShopState extends State<Shop> {
 */
 
   final List<Map<dynamic, dynamic>> products = [
-    {'name': 'Citi Rewards Card', 'rating': 5.0, 'image': 'https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-rewards-visa-card.png'},
-    {'name': 'Citi Lazada Card', 'rating': 5.0, 'image': 'https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-lazada-visa.jpg'},
-    {'name': 'Citi Cash Back Card', 'rating': 5.0, 'image': 'https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-cashback-master.jpg'},
-    {'name': 'Citi Clear Card', 'rating': 5.0, 'image': 'https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-clear-visa.jpg'},
+    {'name': 'Cumulus Freedom Card', 'rating': 5.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png'},
+    {'name': 'Cloud Travel Card', 'rating': 5.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png'},
+    {'name': 'Cloud Plus Card', 'rating': 5.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png'},
+    {'name': 'Student Rewards Card', 'rating': 5.0, 'image': 'https://cumulus-fs.s3.amazonaws.com/images/credit-card-student-no-logo.png'},
 
   ];
 

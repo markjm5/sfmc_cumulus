@@ -34,17 +34,16 @@ class Product
 class _HomeState extends State<Home> {
 
   final List<Product> imgList = [
-      Product('Citi PremierMiles Card','https://www.citibank.com.sg/gcb/credit_cards/images/creditcards-all-cards/card-premiermiles-visa.jpg', 'Citi PremierMiles Card'),
-      Product('Life Insurance Solutions','https://www.citibank.com.sg/gcb/insurance/images/thumbnails/life_insurance_solutions.jpg', 'Life Insurance Solutions'),
-      Product('Citibank Premium Account','https://www.citibank.com.sg/citi-priority/images/home/create_wealth.jpg', 'Citibank Premium Account'),
+      Product('CLOUD-TRAVEL-CARD','https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png', 'CLOUD-TRAVEL-CARD'),
+      Product('CLOUD-PLUS-CARD','https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png', 'CLOUD-PLUS-CARD'),
+      Product('FREEDOM-CARD','https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png', 'FREEDOM-CARD'),
   ];
 
   final List<String> imgList2 = [
       'https://cumulus-fs.s3.amazonaws.com/images/banking-checking.png',
-      'https://cumulus-fs.s3.amazonaws.com/images/banking-checking.png',
-      'https://cumulus-fs.s3.amazonaws.com/images/banking-checking.png',
-      'https://cumulus-fs.s3.amazonaws.com/images/banking-checking.png',
-      'https://cumulus-fs.s3.amazonaws.com/images/banking-checking.png',
+      'https://s3.amazonaws.com/cumulus-fs/images/borrowing-mortgage-loans-new.png',
+      'https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png',
+      'https://cumulus-fs.s3.amazonaws.com/images/investing-mutual-funds.png',
   ];
 
   final List<String> imgList3 = [
@@ -76,9 +75,8 @@ class _HomeState extends State<Home> {
 
 
     // Initial images for banner 1 and banner 2
-    //String banner1Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
-    String banner1Path = 'https://image.s4.sfmc-content.com/lib/fe9215747263077a75/m/1/8a042794-9597-4ac4-9899-7da3257fbabd.jpeg';
-    String banner2Path = 'https://www.citibank.com.sg/gcb/credit_cards/images/overviewBanner/citibank-supplementary-card.jpg';
+    String banner1Path = 'https://cumulus-fs.s3.amazonaws.com/images/ads/banner-newsletter-sign-up.jpg';
+    String banner2Path = 'https://s3.amazonaws.com/cumulus-fs/images/ads/banner-mortage-preapproval-ad.jpg';
 
     // Lets see if a campaign from IS needs to replace the images
     String jsonString = "";
