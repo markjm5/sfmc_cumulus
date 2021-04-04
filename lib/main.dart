@@ -100,8 +100,8 @@ class _MyAppState extends State<MyApp> {
   Future<String> _interactionstudioInitialize() async {
 
     var sendMap = <String, dynamic> {
-      'account': 'interactionstudio',
-      'ds': 'nstevens_citi',
+      'account': 'mmukherjee1477370',
+      'ds': 'cumulus2',
     };
 
     String value;
