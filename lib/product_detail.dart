@@ -5,7 +5,7 @@ import 'package:smooth_star_rating/smooth_star_rating.dart';
 class Products extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context).settings.arguments;
+    final Map args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
         title: Text('Product Detail'),
@@ -21,10 +21,10 @@ class Products extends StatelessWidget {
                 width: double.infinity,
                   height: 260,
                   child: Hero(
-                    tag: args,
+                    tag: args['productImage'],
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
-                      imageUrl: args,
+                      imageUrl: args['productImage'],
                       placeholder: (context, url) =>
                           Center(child: CircularProgressIndicator()),
                       errorWidget: (context, url, error) => new Icon(Icons.error),
@@ -40,7 +40,7 @@ class Products extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.only(top: 15, bottom: 15),
                           child: Text(
-                            'Citi Card',
+                            args['productName'],
                             style: TextStyle(color: Colors.black, fontSize: 24, fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -119,7 +119,7 @@ class Products extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.only(bottom: 10.0),
                                 child: Text(
-                                  "Citi miles never expire so you can use them whenever you want.",
+                                  args['productDescription'],
                                   style: TextStyle(color: Colors.black, fontSize: 16),
                                 ),
                               )

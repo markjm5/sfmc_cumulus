@@ -26,17 +26,20 @@ class Product
   String productName;
   String productImage;
   String productId;
+  String productDescription;
   
-  Product(this.productName, this.productImage, this.productId);
+  Product(this.productName, this.productImage, this.productId, this.productDescription);
 }
 
 
 class _HomeState extends State<Home> {
 
   final List<Product> imgList = [
-      Product('CLOUD-TRAVEL-CARD','https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png', 'CLOUD-TRAVEL-CARD'),
-      Product('CLOUD-PLUS-CARD','https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png', 'CLOUD-PLUS-CARD'),
-      Product('FREEDOM-CARD','https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png', 'FREEDOM-CARD'),
+      Product('Cloud Travel Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-travel-no-logo.png', 'CLOUD-TRAVEL-CARD','Start with 30,000 bonus miles after you spend \$1000 on purchases in the first 3 months your account is open.'),
+      Product('Cloud Plus Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-cloud-plus-no-logo.png', 'CLOUD-PLUS-CARD','If you like seeing points add up quickly and turning them into rewards, then the Cloud Plus Card gives you lots of opportunities.'),
+      Product('Freedom Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-freedom-no-logo.png', 'FREEDOM-CARD','Earn a \$100 new cardmember bonus after you spend \$500 on purchases in your first 3 months.'),
+      Product('Student Rewards Card','https://cumulus-fs.s3.amazonaws.com/images/credit-card-student-no-logo.png', 'STUDENT-CREDIT-CARD','Earn a \$100 new cardmember bonus after you spend \$500 on purchases in your first 3 months.'),
+
   ];
 
   final List<String> imgList2 = [
@@ -184,12 +187,14 @@ class _HomeState extends State<Home> {
                                     child: InkWell(
                                       onTap: () {
                                         _registerTap('viewItem',i.productId, _interactionstudioLogEvent, 'container1'); // View Item
-                                        _registerTap('viewTag',"Fixed Income Securities|3", _interactionstudioLogEvent, 'container1'); //View Tag
+                                        //_registerTap('viewTag',"Fixed Income Securities|3", _interactionstudioLogEvent, 'container1'); //View Tag
                                        // _registerTap('viewCategory',"Credit Cards", _interactionstudioLogEvent); //View Category
 
                                         Navigator.pushNamed(
                                             context, '/products',
-                                            arguments: i.productImage);
+                                            //arguments: i.productImage);
+                                            arguments: {'productImage': i.productImage, 'productName': i.productName, 'productDescription': i.productDescription});
+
                                       },
                                       child: Column(
                                         crossAxisAlignment:
